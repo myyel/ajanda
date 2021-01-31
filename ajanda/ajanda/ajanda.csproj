@@ -46,21 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="aylar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="aylar.Designer.cs">
+      <DependentUpon>aylar.cs</DependentUpon>
+    </Compile>
     <Compile Include="db_planDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>db_planDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="anasayfa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="anasayfa.Designer.cs">
+      <DependentUpon>anasayfa.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="yillar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="yillar.Designer.cs">
+      <DependentUpon>yillar.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="anasayfa.resx">
+      <DependentUpon>anasayfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aylar.resx">
+      <DependentUpon>aylar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -72,6 +87,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="yillar.resx">
+      <DependentUpon>yillar.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="db_planDataSet.xsc">
       <DependentUpon>db_planDataSet.xsd</DependentUpon>
     </None>
@@ -104,6 +122,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sol_ok1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\month_background.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_background2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

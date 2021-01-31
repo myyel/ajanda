@@ -8,3 +8,5 @@ D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.csproj.CoreCompileInputs.cac
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.exe
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.pdb
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.Anasayfa.resources
+D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.aylar.resources
+D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.yillar.resources
