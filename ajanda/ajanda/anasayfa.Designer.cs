@@ -1,7 +1,7 @@
 ﻿
 namespace ajanda
 {
-    partial class anasayfa
+    partial class Anasayfa
     {
         /// <summary>
         /// Required designer variable.
@@ -568,9 +568,9 @@ namespace ajanda
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(212, 26);
+            this.progressBar1.Location = new System.Drawing.Point(206, 26);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(346, 37);
+            this.progressBar1.Size = new System.Drawing.Size(352, 37);
             this.progressBar1.TabIndex = 3;
             // 
             // label_ay
@@ -578,7 +578,7 @@ namespace ajanda
             this.label_ay.AutoSize = true;
             this.label_ay.BackColor = System.Drawing.Color.Transparent;
             this.label_ay.Font = new System.Drawing.Font("Minion Pro", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_ay.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label_ay.ForeColor = System.Drawing.Color.Silver;
             this.label_ay.Location = new System.Drawing.Point(49, 22);
             this.label_ay.Name = "label_ay";
             this.label_ay.Size = new System.Drawing.Size(113, 48);
@@ -587,13 +587,15 @@ namespace ajanda
             this.label_ay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_ay.UseCompatibleTextRendering = true;
             this.label_ay.Click += new System.EventHandler(this.label_ay_Click);
+            this.label_ay.MouseLeave += new System.EventHandler(this.label_ay_MouseLeave);
+            this.label_ay.MouseHover += new System.EventHandler(this.label_ay_MouseHover);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("MingLiU-ExtB", 54.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label4.ForeColor = System.Drawing.Color.DimGray;
             this.label4.Location = new System.Drawing.Point(154, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 73);
@@ -609,7 +611,7 @@ namespace ajanda
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("MingLiU-ExtB", 54.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label3.ForeColor = System.Drawing.Color.DimGray;
             this.label3.Location = new System.Drawing.Point(-4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 73);
@@ -624,7 +626,7 @@ namespace ajanda
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("MingLiU-ExtB", 54.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label9.ForeColor = System.Drawing.Color.DimGray;
             this.label9.Location = new System.Drawing.Point(701, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 73);
@@ -640,7 +642,7 @@ namespace ajanda
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label8.Font = new System.Drawing.Font("MingLiU-ExtB", 54.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label8.ForeColor = System.Drawing.Color.DimGray;
             this.label8.Location = new System.Drawing.Point(550, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 73);
@@ -655,7 +657,7 @@ namespace ajanda
             this.label_yil.AutoSize = true;
             this.label_yil.BackColor = System.Drawing.Color.Transparent;
             this.label_yil.Font = new System.Drawing.Font("Minion Pro", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_yil.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label_yil.ForeColor = System.Drawing.Color.Silver;
             this.label_yil.Location = new System.Drawing.Point(599, 21);
             this.label_yil.Name = "label_yil";
             this.label_yil.Size = new System.Drawing.Size(115, 57);
@@ -663,8 +665,11 @@ namespace ajanda
             this.label_yil.Text = "2029";
             this.label_yil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_yil.UseCompatibleTextRendering = true;
+            this.label_yil.Click += new System.EventHandler(this.label_yil_Click);
+            this.label_yil.MouseLeave += new System.EventHandler(this.label_yil_MouseLeave);
+            this.label_yil.MouseHover += new System.EventHandler(this.label_yil_MouseHover);
             // 
-            // anasayfa
+            // Anasayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -724,7 +729,7 @@ namespace ajanda
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
-            this.Name = "anasayfa";
+            this.Name = "Anasayfa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ajanda";
             this.Load += new System.EventHandler(this.Anasayfa_Load);

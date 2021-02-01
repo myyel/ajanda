@@ -1,7 +1,6 @@
 D:\masaüstü\ajanda\ajanda\ajanda\bin\Debug\ajanda.exe.config
 D:\masaüstü\ajanda\ajanda\ajanda\bin\Debug\ajanda.exe
 D:\masaüstü\ajanda\ajanda\ajanda\bin\Debug\ajanda.pdb
-D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.csprojAssemblyReference.cache
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.Properties.Resources.resources
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.csproj.GenerateResource.cache
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.csproj.CoreCompileInputs.cache
@@ -10,3 +9,4 @@ D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.pdb
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.Anasayfa.resources
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.aylar.resources
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.yillar.resources
+D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.csprojAssemblyReference.cache

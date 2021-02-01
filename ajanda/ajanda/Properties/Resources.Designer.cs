@@ -93,6 +93,46 @@ namespace ajanda.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ok_sag {
+            get {
+                object obj = ResourceManager.GetObject("ok_sag", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ok_sag1 {
+            get {
+                object obj = ResourceManager.GetObject("ok_sag1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ok_sag2 {
+            get {
+                object obj = ResourceManager.GetObject("ok_sag2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ok_sol {
+            get {
+                object obj = ResourceManager.GetObject("ok_sol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sag_ok {
             get {
                 object obj = ResourceManager.GetObject("sag_ok", resourceCulture);
@@ -126,6 +166,16 @@ namespace ajanda.Properties {
         internal static System.Drawing.Bitmap sol_ok2 {
             get {
                 object obj = ResourceManager.GetObject("sol_ok2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap yil_background {
+            get {
+                object obj = ResourceManager.GetObject("yil_background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
