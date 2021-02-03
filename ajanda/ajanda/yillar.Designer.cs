@@ -294,6 +294,7 @@ namespace ajanda
             this.Name = "Yillar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Yıllar";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Yillar_Load);
             this.ResumeLayout(false);
 

@@ -288,6 +288,7 @@ namespace ajanda
             this.Name = "Aylar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "aylar";
+            this.TopMost = true;
             this.ResumeLayout(false);
 
         }
