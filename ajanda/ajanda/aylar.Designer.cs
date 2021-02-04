@@ -47,9 +47,10 @@ namespace ajanda
             // 
             this.ocak.BackColor = System.Drawing.Color.Transparent;
             this.ocak.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ocak.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.ocak.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.ocak.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ocak.FlatAppearance.BorderSize = 0;
+            this.ocak.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.ocak.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ocak.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.ocak.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ocak.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ocak.Location = new System.Drawing.Point(7, 11);
@@ -61,14 +62,17 @@ namespace ajanda
             this.ocak.Text = "Ocak";
             this.ocak.UseVisualStyleBackColor = false;
             this.ocak.Click += new System.EventHandler(this.ocak_Click);
+            this.ocak.MouseLeave += new System.EventHandler(this.ocak_MouseLeave);
+            this.ocak.MouseHover += new System.EventHandler(this.ocak_MouseHover);
             // 
             // subat
             // 
             this.subat.BackColor = System.Drawing.Color.Transparent;
             this.subat.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.subat.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.subat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.subat.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.subat.FlatAppearance.BorderSize = 0;
+            this.subat.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.subat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.subat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.subat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.subat.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subat.Location = new System.Drawing.Point(93, 11);
@@ -79,14 +83,17 @@ namespace ajanda
             this.subat.Text = "Şubat";
             this.subat.UseVisualStyleBackColor = false;
             this.subat.Click += new System.EventHandler(this.subat_Click);
+            this.subat.MouseLeave += new System.EventHandler(this.subat_MouseLeave);
+            this.subat.MouseHover += new System.EventHandler(this.subat_MouseHover);
             // 
             // mart
             // 
             this.mart.BackColor = System.Drawing.Color.Transparent;
             this.mart.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.mart.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.mart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.mart.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.mart.FlatAppearance.BorderSize = 0;
+            this.mart.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.mart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.mart.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.mart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mart.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mart.ForeColor = System.Drawing.Color.Gainsboro;
@@ -98,14 +105,17 @@ namespace ajanda
             this.mart.Text = "Mart";
             this.mart.UseVisualStyleBackColor = false;
             this.mart.Click += new System.EventHandler(this.mart_Click);
+            this.mart.MouseLeave += new System.EventHandler(this.mart_MouseLeave);
+            this.mart.MouseHover += new System.EventHandler(this.mart_MouseHover);
             // 
             // nisan
             // 
             this.nisan.BackColor = System.Drawing.Color.Transparent;
             this.nisan.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.nisan.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.nisan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.nisan.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.nisan.FlatAppearance.BorderSize = 0;
+            this.nisan.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.nisan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.nisan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.nisan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nisan.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nisan.Location = new System.Drawing.Point(7, 101);
@@ -116,14 +126,17 @@ namespace ajanda
             this.nisan.Text = "Nisan";
             this.nisan.UseVisualStyleBackColor = false;
             this.nisan.Click += new System.EventHandler(this.nisan_Click);
+            this.nisan.MouseLeave += new System.EventHandler(this.nisan_MouseLeave);
+            this.nisan.MouseHover += new System.EventHandler(this.nisan_MouseHover);
             // 
             // mayis
             // 
             this.mayis.BackColor = System.Drawing.Color.Transparent;
             this.mayis.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.mayis.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.mayis.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.mayis.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.mayis.FlatAppearance.BorderSize = 0;
+            this.mayis.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.mayis.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.mayis.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.mayis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mayis.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mayis.Location = new System.Drawing.Point(93, 101);
@@ -134,14 +147,17 @@ namespace ajanda
             this.mayis.Text = "Mayıs";
             this.mayis.UseVisualStyleBackColor = false;
             this.mayis.Click += new System.EventHandler(this.mayis_Click);
+            this.mayis.MouseLeave += new System.EventHandler(this.mayis_MouseLeave);
+            this.mayis.MouseHover += new System.EventHandler(this.mayis_MouseHover);
             // 
             // haziran
             // 
             this.haziran.BackColor = System.Drawing.Color.Transparent;
             this.haziran.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.haziran.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.haziran.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.haziran.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.haziran.FlatAppearance.BorderSize = 0;
+            this.haziran.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.haziran.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.haziran.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.haziran.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.haziran.Font = new System.Drawing.Font("Constantia", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.haziran.Location = new System.Drawing.Point(179, 101);
@@ -152,14 +168,17 @@ namespace ajanda
             this.haziran.Text = "Haziran";
             this.haziran.UseVisualStyleBackColor = false;
             this.haziran.Click += new System.EventHandler(this.haziran_Click);
+            this.haziran.MouseLeave += new System.EventHandler(this.haziran_MouseLeave);
+            this.haziran.MouseHover += new System.EventHandler(this.haziran_MouseHover);
             // 
             // temmuz
             // 
             this.temmuz.BackColor = System.Drawing.Color.Transparent;
             this.temmuz.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.temmuz.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.temmuz.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.temmuz.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.temmuz.FlatAppearance.BorderSize = 0;
+            this.temmuz.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.temmuz.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.temmuz.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.temmuz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.temmuz.Font = new System.Drawing.Font("Constantia", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.temmuz.Location = new System.Drawing.Point(7, 191);
@@ -170,14 +189,17 @@ namespace ajanda
             this.temmuz.Text = "Temmuz";
             this.temmuz.UseVisualStyleBackColor = false;
             this.temmuz.Click += new System.EventHandler(this.temmuz_Click);
+            this.temmuz.MouseLeave += new System.EventHandler(this.temmuz_MouseLeave);
+            this.temmuz.MouseHover += new System.EventHandler(this.temmuz_MouseHover);
             // 
             // agustos
             // 
             this.agustos.BackColor = System.Drawing.Color.Transparent;
             this.agustos.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.agustos.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.agustos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.agustos.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.agustos.FlatAppearance.BorderSize = 0;
+            this.agustos.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.agustos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.agustos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.agustos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.agustos.Font = new System.Drawing.Font("Constantia", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.agustos.Location = new System.Drawing.Point(93, 191);
@@ -188,14 +210,17 @@ namespace ajanda
             this.agustos.Text = "Ağustos";
             this.agustos.UseVisualStyleBackColor = false;
             this.agustos.Click += new System.EventHandler(this.agustos_Click);
+            this.agustos.MouseLeave += new System.EventHandler(this.agustos_MouseLeave);
+            this.agustos.MouseHover += new System.EventHandler(this.agustos_MouseHover);
             // 
             // ekim
             // 
             this.ekim.BackColor = System.Drawing.Color.Transparent;
             this.ekim.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ekim.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.ekim.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.ekim.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ekim.FlatAppearance.BorderSize = 0;
+            this.ekim.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.ekim.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ekim.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.ekim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ekim.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ekim.Location = new System.Drawing.Point(7, 281);
@@ -206,14 +231,17 @@ namespace ajanda
             this.ekim.Text = "Ekim";
             this.ekim.UseVisualStyleBackColor = false;
             this.ekim.Click += new System.EventHandler(this.ekim_Click);
+            this.ekim.MouseLeave += new System.EventHandler(this.ekim_MouseLeave);
+            this.ekim.MouseHover += new System.EventHandler(this.ekim_MouseHover);
             // 
             // kasim
             // 
             this.kasim.BackColor = System.Drawing.Color.Transparent;
             this.kasim.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.kasim.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.kasim.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.kasim.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.kasim.FlatAppearance.BorderSize = 0;
+            this.kasim.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.kasim.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.kasim.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.kasim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kasim.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kasim.Location = new System.Drawing.Point(93, 281);
@@ -224,14 +252,17 @@ namespace ajanda
             this.kasim.Text = "Kasım";
             this.kasim.UseVisualStyleBackColor = false;
             this.kasim.Click += new System.EventHandler(this.kasim_Click);
+            this.kasim.MouseLeave += new System.EventHandler(this.kasim_MouseLeave);
+            this.kasim.MouseHover += new System.EventHandler(this.kasim_MouseHover);
             // 
             // eylul
             // 
             this.eylul.BackColor = System.Drawing.Color.Transparent;
             this.eylul.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.eylul.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.eylul.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.eylul.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.eylul.FlatAppearance.BorderSize = 0;
+            this.eylul.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.eylul.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.eylul.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.eylul.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.eylul.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eylul.Location = new System.Drawing.Point(179, 191);
@@ -242,14 +273,17 @@ namespace ajanda
             this.eylul.Text = "Eylül";
             this.eylul.UseVisualStyleBackColor = false;
             this.eylul.Click += new System.EventHandler(this.eylul_Click);
+            this.eylul.MouseLeave += new System.EventHandler(this.eylul_MouseLeave);
+            this.eylul.MouseHover += new System.EventHandler(this.eylul_MouseHover);
             // 
             // aralik
             // 
             this.aralik.BackColor = System.Drawing.Color.Transparent;
             this.aralik.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.aralik.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.aralik.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.aralik.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.aralik.FlatAppearance.BorderSize = 0;
+            this.aralik.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.aralik.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.aralik.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.aralik.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.aralik.Font = new System.Drawing.Font("Constantia", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aralik.Location = new System.Drawing.Point(179, 281);
@@ -260,6 +294,8 @@ namespace ajanda
             this.aralik.Text = "Aralık";
             this.aralik.UseVisualStyleBackColor = false;
             this.aralik.Click += new System.EventHandler(this.aralik_Click);
+            this.aralik.MouseLeave += new System.EventHandler(this.aralik_MouseLeave);
+            this.aralik.MouseHover += new System.EventHandler(this.aralik_MouseHover);
             // 
             // Aylar
             // 

@@ -13,7 +13,7 @@ namespace ajanda
 {
     public partial class Anasayfa : Form
     {
-        SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-RCGP0F0\\SQLEXPRESS;Initial Catalog=db_plan;Integrated Security=True");
+        public SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-RCGP0F0\\SQLEXPRESS;Initial Catalog=db_plan;Integrated Security=True");
        
         public Anasayfa()
         {
@@ -23,7 +23,38 @@ namespace ajanda
         // Anasayfa load
         public void Anasayfa_Load(object sender, EventArgs e)
         {
+            this.Size = new Size(788, 818);
+            string gun = DateTime.Now.Day.ToString();
+            string mont = DateTime.Now.Month.ToString();
             string yil = DateTime.Now.Year.ToString();
+            if (Convert.ToInt32(DateTime.Now.Day)<10 || Convert.ToInt32(DateTime.Now.Month)<10)
+            {
+                if (Convert.ToInt32(DateTime.Now.Day) < 10)
+                {
+                    string new_mont = null;
+                    if (Convert.ToInt32(DateTime.Now.Month) < 10)
+                    {
+                        new_mont = "0" + mont;
+
+                    }
+                    else
+                    {
+                        new_mont = mont;
+                    }
+                    string tarih = "0" + gun + "." + new_mont + "." + yil;
+                    label_gun.Text = tarih;
+
+                }
+                else
+                {
+                    string tarih =  gun + "." +"0"+ mont + "." + yil;
+                    label_gun.Text = tarih;
+                }
+            }
+            else
+            {
+                
+            }
             int yil2 = Convert.ToInt32(DateTime.Now.Year);
             if (yil2 == 2021)
             {
@@ -42,9 +73,16 @@ namespace ajanda
                 yil_ekle.ExecuteNonQuery();
                 baglanti.Close();
             }
-            baglanti.Close();
             int ay = Convert.ToInt32(DateTime.Now.Month);
-            ay_bulma(ay);            
+            baglanti.Close();
+            ay_bulma(ay);
+        }
+
+        // anasayfa büyümesi ve yapılacaklar listesi
+        public void anasayfa_list(int gun)
+        {
+            this.Size = new Size(1250, 818);
+            this.BackgroundImage = Properties.Resources.home_background2_acik;
         }
 
         // bugünün ya da istenilen ayı bulma fonksiyonu
@@ -2365,7 +2403,28 @@ namespace ajanda
                 }
             }
         }
-        
+
+        // ekle formu
+        private void ekle_MouseHover(object sender, EventArgs e)
+        {
+            ekle.ForeColor = Color.WhiteSmoke;
+        }
+
+        private void ekle_MouseLeave(object sender, EventArgs e)
+        {
+            ekle.ForeColor = Color.Silver;
+        }
+
+        private void ekle_Click(object sender, EventArgs e)
+        {
+            Ekle ekle_form = new Ekle();
+            if (Application.OpenForms["Ekle"] == null)
+            {
+                ekle_form.Show();
+
+            }
+        }
+
         // Ay ve yıl okları
         private void label3_MouseLeave(object sender, EventArgs e)
         {
@@ -2503,6 +2562,420 @@ namespace ajanda
                 yil_form.Show();
 
             }
+        }
+
+        // butonların flat ayarları
+        private void button1_MouseHover(object sender, EventArgs e)
+        {
+            button1.FlatAppearance.BorderColor = Color.Silver;
+            button1.FlatAppearance.BorderSize = 1;
+        }
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button2_MouseHover(object sender, EventArgs e)
+        {
+            button2.FlatAppearance.BorderColor = Color.Silver;
+            button2.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            button2.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button3_MouseHover(object sender, EventArgs e)
+        {
+            button3.FlatAppearance.BorderColor = Color.Silver;
+            button3.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button3_MouseLeave(object sender, EventArgs e)
+        {
+            button3.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button4_MouseHover(object sender, EventArgs e)
+        {
+            button4.FlatAppearance.BorderColor = Color.Silver;
+            button4.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button4_MouseLeave(object sender, EventArgs e)
+        {
+            button4.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button5_MouseHover(object sender, EventArgs e)
+        {
+            button5.FlatAppearance.BorderColor = Color.Silver;
+            button5.FlatAppearance.BorderSize = 1;
+
+        }
+
+        private void button5_MouseLeave(object sender, EventArgs e)
+        {
+            button5.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button6_MouseHover(object sender, EventArgs e)
+        {
+            button6.FlatAppearance.BorderColor = Color.Silver;
+            button6.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button6_MouseLeave(object sender, EventArgs e)
+        {
+            button6.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button7_MouseHover(object sender, EventArgs e)
+        {
+            button7.FlatAppearance.BorderColor = Color.Silver;
+            button7.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button7_MouseLeave(object sender, EventArgs e)
+        {
+            button7.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button8_MouseHover(object sender, EventArgs e)
+        {
+            button8.FlatAppearance.BorderColor = Color.Silver;
+            button8.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button8_MouseLeave(object sender, EventArgs e)
+        {
+            button8.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button9_MouseHover(object sender, EventArgs e)
+        {
+            button9.FlatAppearance.BorderColor = Color.Silver;
+            button9.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button9_MouseLeave(object sender, EventArgs e)
+        {
+            button9.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button10_MouseHover(object sender, EventArgs e)
+        {
+            button10.FlatAppearance.BorderColor = Color.Silver;
+            button10.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button10_MouseLeave(object sender, EventArgs e)
+        {
+            button10.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button11_MouseHover(object sender, EventArgs e)
+        {
+            button11.FlatAppearance.BorderColor = Color.Silver;
+            button11.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button11_MouseLeave(object sender, EventArgs e)
+        {
+            button11.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button12_MouseHover(object sender, EventArgs e)
+        {
+            button12.FlatAppearance.BorderColor = Color.Silver;
+            button12.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button12_MouseLeave(object sender, EventArgs e)
+        {
+            button12.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button13_MouseHover(object sender, EventArgs e)
+        {
+            button13.FlatAppearance.BorderColor = Color.Silver;
+            button13.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button13_MouseLeave(object sender, EventArgs e)
+        {
+            button13.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button14_MouseHover(object sender, EventArgs e)
+        {
+            button14.FlatAppearance.BorderColor = Color.Silver;
+            button14.FlatAppearance.BorderSize = 1;
+        }
+        private void button14_MouseLeave_1(object sender, EventArgs e)
+        {
+            button14.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button15_MouseHover(object sender, EventArgs e)
+        {
+            button15.FlatAppearance.BorderColor = Color.Silver;
+            button15.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button15_MouseLeave(object sender, EventArgs e)
+        {
+            button15.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button16_MouseHover(object sender, EventArgs e)
+        {
+            button16.FlatAppearance.BorderColor = Color.Silver;
+            button16.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button16_MouseLeave(object sender, EventArgs e)
+        {
+            button16.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button17_MouseHover(object sender, EventArgs e)
+        {
+            button17.FlatAppearance.BorderColor = Color.Silver;
+            button17.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button17_MouseLeave(object sender, EventArgs e)
+        {
+            button17.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button18_MouseHover(object sender, EventArgs e)
+        {
+            button18.FlatAppearance.BorderColor = Color.Silver;
+            button18.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button18_MouseLeave(object sender, EventArgs e)
+        {
+            button18.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button19_MouseHover(object sender, EventArgs e)
+        {
+            button19.FlatAppearance.BorderColor = Color.Silver;
+            button19.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button19_MouseLeave(object sender, EventArgs e)
+        {
+            button19.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button20_MouseHover(object sender, EventArgs e)
+        {
+            button20.FlatAppearance.BorderColor = Color.Silver;
+            button20.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button20_MouseLeave(object sender, EventArgs e)
+        {
+            button20.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button21_MouseHover(object sender, EventArgs e)
+        {
+            button21.FlatAppearance.BorderColor = Color.Silver;
+            button21.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button21_MouseLeave(object sender, EventArgs e)
+        {
+            button21.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button22_MouseHover(object sender, EventArgs e)
+        {
+            button22.FlatAppearance.BorderColor = Color.Silver;
+            button22.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button22_MouseLeave(object sender, EventArgs e)
+        {
+            button22.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button23_MouseHover(object sender, EventArgs e)
+        {
+            button23.FlatAppearance.BorderColor = Color.Silver;
+            button23.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button23_MouseLeave(object sender, EventArgs e)
+        {
+            button23.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button24_MouseHover(object sender, EventArgs e)
+        {
+            button24.FlatAppearance.BorderColor = Color.Silver;
+            button24.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button24_MouseLeave(object sender, EventArgs e)
+        {
+            button24.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button25_MouseHover(object sender, EventArgs e)
+        {
+            button25.FlatAppearance.BorderColor = Color.Silver;
+            button25.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button25_MouseLeave(object sender, EventArgs e)
+        {
+            button25.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button26_MouseHover(object sender, EventArgs e)
+        {
+            button26.FlatAppearance.BorderColor = Color.Silver;
+            button26.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button26_MouseLeave(object sender, EventArgs e)
+        {
+            button26.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button27_MouseHover(object sender, EventArgs e)
+        {
+            button27.FlatAppearance.BorderColor = Color.Silver;
+            button27.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button27_MouseLeave(object sender, EventArgs e)
+        {
+            button27.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button28_MouseHover(object sender, EventArgs e)
+        {
+            button28.FlatAppearance.BorderColor = Color.Silver;
+            button28.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button28_MouseLeave(object sender, EventArgs e)
+        {
+            button28.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button29_MouseHover(object sender, EventArgs e)
+        {
+            button29.FlatAppearance.BorderColor = Color.Silver;
+            button29.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button29_MouseLeave(object sender, EventArgs e)
+        {
+            button29.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button30_MouseHover(object sender, EventArgs e)
+        {
+            button30.FlatAppearance.BorderColor = Color.Silver;
+            button30.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button30_MouseLeave(object sender, EventArgs e)
+        {
+            button30.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button31_MouseHover(object sender, EventArgs e)
+        {
+            button31.FlatAppearance.BorderColor = Color.Silver;
+            button31.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button31_MouseLeave(object sender, EventArgs e)
+        {
+            button31.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button32_MouseHover(object sender, EventArgs e)
+        {
+            button32.FlatAppearance.BorderColor = Color.Silver;
+            button32.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button32_MouseLeave(object sender, EventArgs e)
+        {
+            button32.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button33_MouseHover(object sender, EventArgs e)
+        {
+            button33.FlatAppearance.BorderColor = Color.Silver;
+            button33.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button33_MouseLeave(object sender, EventArgs e)
+        {
+            button33.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button34_MouseHover(object sender, EventArgs e)
+        {
+            button34.FlatAppearance.BorderColor = Color.Silver;
+            button34.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button34_MouseLeave(object sender, EventArgs e)
+        {
+            button34.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button35_MouseHover(object sender, EventArgs e)
+        {
+            button35.FlatAppearance.BorderColor = Color.Silver;
+            button35.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button35_MouseLeave(object sender, EventArgs e)
+        {
+            button35.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button36_MouseHover(object sender, EventArgs e)
+        {
+            button36.FlatAppearance.BorderColor = Color.Silver;
+            button36.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button36_MouseLeave(object sender, EventArgs e)
+        {
+            button36.FlatAppearance.BorderSize = 0;
+        }
+
+        private void button37_MouseHover(object sender, EventArgs e)
+        {
+            button37.FlatAppearance.BorderColor = Color.Silver;
+            button37.FlatAppearance.BorderSize = 1;
+        }
+
+        private void button37_MouseLeave(object sender, EventArgs e)
+        {
+            button37.FlatAppearance.BorderSize = 0;
+        }
+
+        // gün butonları liste açma
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int gun = Convert.ToInt32(button1.Text);
+            anasayfa_list(gun);
         }
     }
 }

@@ -63,6 +63,16 @@ namespace ajanda.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ekle_background {
+            get {
+                object obj = ResourceManager.GetObject("ekle_background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap home_background {
             get {
                 object obj = ResourceManager.GetObject("home_background", resourceCulture);
@@ -76,6 +86,36 @@ namespace ajanda.Properties {
         internal static System.Drawing.Bitmap home_background2 {
             get {
                 object obj = ResourceManager.GetObject("home_background2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap home_background2_acik {
+            get {
+                object obj = ResourceManager.GetObject("home_background2_acik", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap home_background21 {
+            get {
+                object obj = ResourceManager.GetObject("home_background21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap home_background22 {
+            get {
+                object obj = ResourceManager.GetObject("home_background22", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

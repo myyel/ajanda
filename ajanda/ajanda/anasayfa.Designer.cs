@@ -80,561 +80,632 @@ namespace ajanda
             this.button36 = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.ekle = new System.Windows.Forms.Label();
+            this.label_gun = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Gainsboro;
             this.button1.Location = new System.Drawing.Point(9, 133);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 100);
-            this.button1.TabIndex = 100;
+            this.button1.TabIndex = 1;
+            this.button1.TabStop = false;
             this.button1.Tag = "as";
-            this.button1.Text = "button1";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.Text = "buto";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
+            this.button1.MouseHover += new System.EventHandler(this.button1_MouseHover);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.CausesValidation = false;
             this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Gainsboro;
             this.button2.Location = new System.Drawing.Point(115, 133);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 100);
-            this.button2.TabIndex = 100;
+            this.button2.TabIndex = 2;
+            this.button2.TabStop = false;
             this.button2.Tag = "as";
             this.button2.Text = "button1";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
+            this.button2.MouseHover += new System.EventHandler(this.button2_MouseHover);
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Gainsboro;
             this.button3.Location = new System.Drawing.Point(221, 133);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 100);
-            this.button3.TabIndex = 100;
+            this.button3.TabIndex = 3;
+            this.button3.TabStop = false;
             this.button3.Text = "button1";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
+            this.button3.MouseHover += new System.EventHandler(this.button3_MouseHover);
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Transparent;
             this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.Gainsboro;
             this.button5.Location = new System.Drawing.Point(433, 133);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(100, 100);
-            this.button5.TabIndex = 100;
+            this.button5.TabIndex = 5;
+            this.button5.TabStop = false;
             this.button5.Text = "button1";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.MouseLeave += new System.EventHandler(this.button5_MouseLeave);
+            this.button5.MouseHover += new System.EventHandler(this.button5_MouseHover);
             // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.Transparent;
             this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.Gainsboro;
             this.button6.Location = new System.Drawing.Point(539, 133);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(100, 100);
-            this.button6.TabIndex = 100;
+            this.button6.TabIndex = 6;
+            this.button6.TabStop = false;
             this.button6.Text = "button1";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.MouseLeave += new System.EventHandler(this.button6_MouseLeave);
+            this.button6.MouseHover += new System.EventHandler(this.button6_MouseHover);
             // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.Transparent;
             this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.Gainsboro;
             this.button7.Location = new System.Drawing.Point(645, 133);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(100, 100);
-            this.button7.TabIndex = 100;
+            this.button7.TabIndex = 7;
+            this.button7.TabStop = false;
             this.button7.Text = "button1";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.MouseLeave += new System.EventHandler(this.button7_MouseLeave);
+            this.button7.MouseHover += new System.EventHandler(this.button7_MouseHover);
             // 
             // button8
             // 
             this.button8.BackColor = System.Drawing.Color.Transparent;
             this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.Gainsboro;
             this.button8.Location = new System.Drawing.Point(9, 239);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(100, 100);
-            this.button8.TabIndex = 100;
+            this.button8.TabIndex = 8;
+            this.button8.TabStop = false;
             this.button8.Text = "button1";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.MouseLeave += new System.EventHandler(this.button8_MouseLeave);
+            this.button8.MouseHover += new System.EventHandler(this.button8_MouseHover);
             // 
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.Transparent;
             this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.Gainsboro;
             this.button9.Location = new System.Drawing.Point(115, 239);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(100, 100);
-            this.button9.TabIndex = 100;
+            this.button9.TabIndex = 9;
+            this.button9.TabStop = false;
             this.button9.Text = "button1";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.MouseLeave += new System.EventHandler(this.button9_MouseLeave);
+            this.button9.MouseHover += new System.EventHandler(this.button9_MouseHover);
             // 
             // button10
             // 
             this.button10.BackColor = System.Drawing.Color.Transparent;
             this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.Gainsboro;
             this.button10.Location = new System.Drawing.Point(221, 239);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(100, 100);
-            this.button10.TabIndex = 100;
+            this.button10.TabIndex = 10;
+            this.button10.TabStop = false;
             this.button10.Text = "button1";
-            this.button10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.MouseLeave += new System.EventHandler(this.button10_MouseLeave);
+            this.button10.MouseHover += new System.EventHandler(this.button10_MouseHover);
             // 
             // button11
             // 
             this.button11.BackColor = System.Drawing.Color.Transparent;
             this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.Gainsboro;
             this.button11.Location = new System.Drawing.Point(327, 239);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(100, 100);
-            this.button11.TabIndex = 100;
+            this.button11.TabIndex = 11;
+            this.button11.TabStop = false;
             this.button11.Text = "button1";
-            this.button11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.MouseLeave += new System.EventHandler(this.button11_MouseLeave);
+            this.button11.MouseHover += new System.EventHandler(this.button11_MouseHover);
             // 
             // button12
             // 
             this.button12.BackColor = System.Drawing.Color.Transparent;
             this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.Gainsboro;
             this.button12.Location = new System.Drawing.Point(433, 239);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(100, 100);
-            this.button12.TabIndex = 100;
+            this.button12.TabIndex = 12;
+            this.button12.TabStop = false;
             this.button12.Text = "button1";
-            this.button12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.MouseLeave += new System.EventHandler(this.button12_MouseLeave);
+            this.button12.MouseHover += new System.EventHandler(this.button12_MouseHover);
             // 
             // button13
             // 
             this.button13.BackColor = System.Drawing.Color.Transparent;
             this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.ForeColor = System.Drawing.Color.Gainsboro;
             this.button13.Location = new System.Drawing.Point(539, 239);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(100, 100);
-            this.button13.TabIndex = 100;
+            this.button13.TabIndex = 13;
+            this.button13.TabStop = false;
             this.button13.Text = "button1";
-            this.button13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.MouseLeave += new System.EventHandler(this.button13_MouseLeave);
+            this.button13.MouseHover += new System.EventHandler(this.button13_MouseHover);
             // 
             // button14
             // 
             this.button14.BackColor = System.Drawing.Color.Transparent;
             this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button14.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.ForeColor = System.Drawing.Color.Gainsboro;
             this.button14.Location = new System.Drawing.Point(645, 239);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(100, 100);
-            this.button14.TabIndex = 100;
+            this.button14.TabIndex = 14;
+            this.button14.TabStop = false;
             this.button14.Text = "button1";
-            this.button14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button14.UseVisualStyleBackColor = false;
+            this.button14.MouseLeave += new System.EventHandler(this.button14_MouseLeave_1);
+            this.button14.MouseHover += new System.EventHandler(this.button14_MouseHover);
             // 
             // button15
             // 
             this.button15.BackColor = System.Drawing.Color.Transparent;
             this.button15.FlatAppearance.BorderSize = 0;
-            this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button15.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button15.ForeColor = System.Drawing.Color.Gainsboro;
             this.button15.Location = new System.Drawing.Point(9, 344);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(100, 100);
-            this.button15.TabIndex = 100;
+            this.button15.TabIndex = 15;
+            this.button15.TabStop = false;
             this.button15.Text = "button1";
-            this.button15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button15.UseVisualStyleBackColor = false;
+            this.button15.MouseLeave += new System.EventHandler(this.button15_MouseLeave);
+            this.button15.MouseHover += new System.EventHandler(this.button15_MouseHover);
             // 
             // button16
             // 
             this.button16.BackColor = System.Drawing.Color.Transparent;
             this.button16.FlatAppearance.BorderSize = 0;
-            this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button16.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button16.ForeColor = System.Drawing.Color.Gainsboro;
             this.button16.Location = new System.Drawing.Point(115, 344);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(100, 100);
-            this.button16.TabIndex = 100;
+            this.button16.TabIndex = 16;
+            this.button16.TabStop = false;
             this.button16.Text = "button1";
-            this.button16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button16.UseVisualStyleBackColor = false;
+            this.button16.MouseLeave += new System.EventHandler(this.button16_MouseLeave);
+            this.button16.MouseHover += new System.EventHandler(this.button16_MouseHover);
             // 
             // button22
             // 
             this.button22.BackColor = System.Drawing.Color.Transparent;
             this.button22.FlatAppearance.BorderSize = 0;
-            this.button22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button22.ForeColor = System.Drawing.Color.Gainsboro;
             this.button22.Location = new System.Drawing.Point(9, 450);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(100, 100);
-            this.button22.TabIndex = 100;
+            this.button22.TabIndex = 22;
+            this.button22.TabStop = false;
             this.button22.Text = "button1";
-            this.button22.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button22.UseVisualStyleBackColor = false;
+            this.button22.MouseLeave += new System.EventHandler(this.button22_MouseLeave);
+            this.button22.MouseHover += new System.EventHandler(this.button22_MouseHover);
             // 
             // button17
             // 
             this.button17.BackColor = System.Drawing.Color.Transparent;
             this.button17.FlatAppearance.BorderSize = 0;
-            this.button17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button17.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button17.ForeColor = System.Drawing.Color.Gainsboro;
             this.button17.Location = new System.Drawing.Point(221, 344);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(100, 100);
-            this.button17.TabIndex = 100;
+            this.button17.TabIndex = 17;
+            this.button17.TabStop = false;
             this.button17.Text = "button1";
-            this.button17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button17.UseVisualStyleBackColor = false;
+            this.button17.MouseLeave += new System.EventHandler(this.button17_MouseLeave);
+            this.button17.MouseHover += new System.EventHandler(this.button17_MouseHover);
             // 
             // button23
             // 
             this.button23.BackColor = System.Drawing.Color.Transparent;
             this.button23.FlatAppearance.BorderSize = 0;
-            this.button23.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button23.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button23.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button23.ForeColor = System.Drawing.Color.Gainsboro;
             this.button23.Location = new System.Drawing.Point(115, 450);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(100, 100);
-            this.button23.TabIndex = 100;
+            this.button23.TabIndex = 23;
+            this.button23.TabStop = false;
             this.button23.Text = "button1";
-            this.button23.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button23.UseVisualStyleBackColor = false;
+            this.button23.MouseLeave += new System.EventHandler(this.button23_MouseLeave);
+            this.button23.MouseHover += new System.EventHandler(this.button23_MouseHover);
             // 
             // button24
             // 
             this.button24.BackColor = System.Drawing.Color.Transparent;
             this.button24.FlatAppearance.BorderSize = 0;
-            this.button24.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button24.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button24.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button24.ForeColor = System.Drawing.Color.Gainsboro;
             this.button24.Location = new System.Drawing.Point(221, 450);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(100, 100);
-            this.button24.TabIndex = 100;
+            this.button24.TabIndex = 24;
+            this.button24.TabStop = false;
             this.button24.Text = "button1";
-            this.button24.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button24.UseVisualStyleBackColor = false;
+            this.button24.MouseLeave += new System.EventHandler(this.button24_MouseLeave);
+            this.button24.MouseHover += new System.EventHandler(this.button24_MouseHover);
             // 
             // button18
             // 
             this.button18.BackColor = System.Drawing.Color.Transparent;
             this.button18.FlatAppearance.BorderSize = 0;
-            this.button18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button18.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button18.ForeColor = System.Drawing.Color.Gainsboro;
             this.button18.Location = new System.Drawing.Point(327, 344);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(100, 100);
-            this.button18.TabIndex = 100;
+            this.button18.TabIndex = 18;
+            this.button18.TabStop = false;
             this.button18.Text = "button1";
-            this.button18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button18.UseVisualStyleBackColor = false;
+            this.button18.MouseLeave += new System.EventHandler(this.button18_MouseLeave);
+            this.button18.MouseHover += new System.EventHandler(this.button18_MouseHover);
             // 
             // button25
             // 
             this.button25.BackColor = System.Drawing.Color.Transparent;
             this.button25.FlatAppearance.BorderSize = 0;
-            this.button25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button25.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button25.ForeColor = System.Drawing.Color.Gainsboro;
             this.button25.Location = new System.Drawing.Point(327, 450);
             this.button25.Name = "button25";
             this.button25.Size = new System.Drawing.Size(100, 100);
-            this.button25.TabIndex = 100;
+            this.button25.TabIndex = 25;
+            this.button25.TabStop = false;
             this.button25.Text = "button1";
-            this.button25.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button25.UseVisualStyleBackColor = false;
+            this.button25.MouseLeave += new System.EventHandler(this.button25_MouseLeave);
+            this.button25.MouseHover += new System.EventHandler(this.button25_MouseHover);
             // 
             // button19
             // 
             this.button19.BackColor = System.Drawing.Color.Transparent;
             this.button19.FlatAppearance.BorderSize = 0;
-            this.button19.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button19.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button19.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button19.ForeColor = System.Drawing.Color.Gainsboro;
             this.button19.Location = new System.Drawing.Point(433, 344);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(100, 100);
-            this.button19.TabIndex = 100;
+            this.button19.TabIndex = 19;
+            this.button19.TabStop = false;
             this.button19.Text = "button1";
-            this.button19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button19.UseVisualStyleBackColor = false;
+            this.button19.MouseLeave += new System.EventHandler(this.button19_MouseLeave);
+            this.button19.MouseHover += new System.EventHandler(this.button19_MouseHover);
             // 
             // button26
             // 
             this.button26.BackColor = System.Drawing.Color.Transparent;
             this.button26.FlatAppearance.BorderSize = 0;
-            this.button26.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button26.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button26.ForeColor = System.Drawing.Color.Gainsboro;
             this.button26.Location = new System.Drawing.Point(433, 450);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(100, 100);
-            this.button26.TabIndex = 100;
+            this.button26.TabIndex = 26;
+            this.button26.TabStop = false;
             this.button26.Text = "button1";
-            this.button26.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button26.UseVisualStyleBackColor = false;
+            this.button26.MouseLeave += new System.EventHandler(this.button26_MouseLeave);
+            this.button26.MouseHover += new System.EventHandler(this.button26_MouseHover);
             // 
             // button20
             // 
             this.button20.BackColor = System.Drawing.Color.Transparent;
             this.button20.FlatAppearance.BorderSize = 0;
-            this.button20.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button20.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button20.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button20.ForeColor = System.Drawing.Color.Gainsboro;
             this.button20.Location = new System.Drawing.Point(539, 344);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(100, 100);
-            this.button20.TabIndex = 100;
+            this.button20.TabIndex = 20;
+            this.button20.TabStop = false;
             this.button20.Text = "button1";
-            this.button20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button20.UseVisualStyleBackColor = false;
+            this.button20.MouseLeave += new System.EventHandler(this.button20_MouseLeave);
+            this.button20.MouseHover += new System.EventHandler(this.button20_MouseHover);
             // 
             // button27
             // 
             this.button27.BackColor = System.Drawing.Color.Transparent;
             this.button27.FlatAppearance.BorderSize = 0;
-            this.button27.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button27.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button27.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button27.ForeColor = System.Drawing.Color.Gainsboro;
             this.button27.Location = new System.Drawing.Point(539, 450);
             this.button27.Name = "button27";
             this.button27.Size = new System.Drawing.Size(100, 100);
-            this.button27.TabIndex = 100;
+            this.button27.TabIndex = 27;
+            this.button27.TabStop = false;
             this.button27.Text = "button1";
-            this.button27.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button27.UseVisualStyleBackColor = false;
+            this.button27.MouseLeave += new System.EventHandler(this.button27_MouseLeave);
+            this.button27.MouseHover += new System.EventHandler(this.button27_MouseHover);
             // 
             // button21
             // 
             this.button21.BackColor = System.Drawing.Color.Transparent;
             this.button21.FlatAppearance.BorderSize = 0;
-            this.button21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button21.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button21.ForeColor = System.Drawing.Color.Gainsboro;
             this.button21.Location = new System.Drawing.Point(645, 344);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(100, 100);
-            this.button21.TabIndex = 100;
+            this.button21.TabIndex = 21;
+            this.button21.TabStop = false;
             this.button21.Text = "button1";
-            this.button21.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button21.UseVisualStyleBackColor = false;
+            this.button21.MouseLeave += new System.EventHandler(this.button21_MouseLeave);
+            this.button21.MouseHover += new System.EventHandler(this.button21_MouseHover);
             // 
             // button28
             // 
             this.button28.BackColor = System.Drawing.Color.Transparent;
             this.button28.FlatAppearance.BorderSize = 0;
-            this.button28.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button28.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button28.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button28.ForeColor = System.Drawing.Color.Gainsboro;
             this.button28.Location = new System.Drawing.Point(645, 450);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(100, 100);
-            this.button28.TabIndex = 100;
+            this.button28.TabIndex = 28;
+            this.button28.TabStop = false;
             this.button28.Text = "button1";
-            this.button28.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button28.UseVisualStyleBackColor = false;
+            this.button28.MouseLeave += new System.EventHandler(this.button28_MouseLeave);
+            this.button28.MouseHover += new System.EventHandler(this.button28_MouseHover);
             // 
             // button29
             // 
             this.button29.BackColor = System.Drawing.Color.Transparent;
             this.button29.FlatAppearance.BorderSize = 0;
-            this.button29.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button29.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button29.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button29.ForeColor = System.Drawing.Color.Gainsboro;
             this.button29.Location = new System.Drawing.Point(9, 556);
             this.button29.Name = "button29";
             this.button29.Size = new System.Drawing.Size(100, 100);
-            this.button29.TabIndex = 100;
+            this.button29.TabIndex = 29;
+            this.button29.TabStop = false;
             this.button29.Text = "button1";
-            this.button29.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button29.UseVisualStyleBackColor = false;
+            this.button29.MouseLeave += new System.EventHandler(this.button29_MouseLeave);
+            this.button29.MouseHover += new System.EventHandler(this.button29_MouseHover);
             // 
             // button30
             // 
             this.button30.BackColor = System.Drawing.Color.Transparent;
             this.button30.FlatAppearance.BorderSize = 0;
-            this.button30.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button30.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button30.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button30.ForeColor = System.Drawing.Color.Gainsboro;
             this.button30.Location = new System.Drawing.Point(115, 556);
             this.button30.Name = "button30";
             this.button30.Size = new System.Drawing.Size(100, 100);
-            this.button30.TabIndex = 100;
+            this.button30.TabIndex = 30;
+            this.button30.TabStop = false;
             this.button30.Text = "button1";
-            this.button30.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button30.UseVisualStyleBackColor = false;
+            this.button30.MouseLeave += new System.EventHandler(this.button30_MouseLeave);
+            this.button30.MouseHover += new System.EventHandler(this.button30_MouseHover);
             // 
             // button31
             // 
             this.button31.BackColor = System.Drawing.Color.Transparent;
             this.button31.FlatAppearance.BorderSize = 0;
-            this.button31.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button31.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button31.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button31.ForeColor = System.Drawing.Color.Gainsboro;
             this.button31.Location = new System.Drawing.Point(221, 556);
             this.button31.Name = "button31";
             this.button31.Size = new System.Drawing.Size(100, 100);
-            this.button31.TabIndex = 100;
+            this.button31.TabIndex = 31;
+            this.button31.TabStop = false;
             this.button31.Text = "button1";
-            this.button31.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button31.UseVisualStyleBackColor = false;
+            this.button31.MouseLeave += new System.EventHandler(this.button31_MouseLeave);
+            this.button31.MouseHover += new System.EventHandler(this.button31_MouseHover);
             // 
             // button32
             // 
             this.button32.BackColor = System.Drawing.Color.Transparent;
             this.button32.FlatAppearance.BorderSize = 0;
-            this.button32.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button32.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button32.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button32.ForeColor = System.Drawing.Color.Gainsboro;
             this.button32.Location = new System.Drawing.Point(327, 556);
             this.button32.Name = "button32";
             this.button32.Size = new System.Drawing.Size(100, 100);
-            this.button32.TabIndex = 100;
+            this.button32.TabIndex = 32;
+            this.button32.TabStop = false;
             this.button32.Text = "button1";
-            this.button32.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button32.UseVisualStyleBackColor = false;
+            this.button32.MouseLeave += new System.EventHandler(this.button32_MouseLeave);
+            this.button32.MouseHover += new System.EventHandler(this.button32_MouseHover);
             // 
             // button33
             // 
             this.button33.BackColor = System.Drawing.Color.Transparent;
             this.button33.FlatAppearance.BorderSize = 0;
-            this.button33.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button33.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button33.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button33.ForeColor = System.Drawing.Color.Gainsboro;
             this.button33.Location = new System.Drawing.Point(433, 556);
             this.button33.Name = "button33";
             this.button33.Size = new System.Drawing.Size(100, 100);
-            this.button33.TabIndex = 100;
+            this.button33.TabIndex = 33;
+            this.button33.TabStop = false;
             this.button33.Text = "button1";
-            this.button33.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button33.UseVisualStyleBackColor = false;
+            this.button33.MouseLeave += new System.EventHandler(this.button33_MouseLeave);
+            this.button33.MouseHover += new System.EventHandler(this.button33_MouseHover);
             // 
             // button34
             // 
             this.button34.BackColor = System.Drawing.Color.Transparent;
             this.button34.FlatAppearance.BorderSize = 0;
-            this.button34.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button34.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button34.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button34.ForeColor = System.Drawing.Color.Gainsboro;
             this.button34.Location = new System.Drawing.Point(539, 556);
             this.button34.Name = "button34";
             this.button34.Size = new System.Drawing.Size(100, 100);
-            this.button34.TabIndex = 100;
+            this.button34.TabIndex = 34;
+            this.button34.TabStop = false;
             this.button34.Text = "button1";
-            this.button34.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button34.UseVisualStyleBackColor = false;
+            this.button34.MouseLeave += new System.EventHandler(this.button34_MouseLeave);
+            this.button34.MouseHover += new System.EventHandler(this.button34_MouseHover);
             // 
             // button35
             // 
             this.button35.BackColor = System.Drawing.Color.Transparent;
             this.button35.FlatAppearance.BorderSize = 0;
-            this.button35.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button35.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button35.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button35.ForeColor = System.Drawing.Color.Gainsboro;
             this.button35.Location = new System.Drawing.Point(645, 556);
             this.button35.Name = "button35";
             this.button35.Size = new System.Drawing.Size(100, 100);
-            this.button35.TabIndex = 100;
+            this.button35.TabIndex = 35;
+            this.button35.TabStop = false;
             this.button35.Text = "button1";
-            this.button35.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button35.UseVisualStyleBackColor = false;
+            this.button35.MouseLeave += new System.EventHandler(this.button35_MouseLeave);
+            this.button35.MouseHover += new System.EventHandler(this.button35_MouseHover);
             // 
             // pzt
             // 
             this.pzt.AutoSize = true;
             this.pzt.BackColor = System.Drawing.Color.Transparent;
             this.pzt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.pzt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.pzt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.pzt.ForeColor = System.Drawing.Color.Gainsboro;
             this.pzt.Location = new System.Drawing.Point(25, 90);
             this.pzt.Name = "pzt";
@@ -647,7 +718,7 @@ namespace ajanda
             this.sal.AutoSize = true;
             this.sal.BackColor = System.Drawing.Color.Transparent;
             this.sal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.sal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.sal.ForeColor = System.Drawing.Color.Gainsboro;
             this.sal.Location = new System.Drawing.Point(135, 90);
             this.sal.Name = "sal";
@@ -660,7 +731,7 @@ namespace ajanda
             this.car.AutoSize = true;
             this.car.BackColor = System.Drawing.Color.Transparent;
             this.car.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.car.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.car.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.car.ForeColor = System.Drawing.Color.Gainsboro;
             this.car.Location = new System.Drawing.Point(230, 90);
             this.car.Name = "car";
@@ -673,7 +744,7 @@ namespace ajanda
             this.per.AutoSize = true;
             this.per.BackColor = System.Drawing.Color.Transparent;
             this.per.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.per.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.per.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.per.ForeColor = System.Drawing.Color.Gainsboro;
             this.per.Location = new System.Drawing.Point(339, 90);
             this.per.Name = "per";
@@ -686,7 +757,7 @@ namespace ajanda
             this.cum.AutoSize = true;
             this.cum.BackColor = System.Drawing.Color.Transparent;
             this.cum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cum.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cum.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cum.ForeColor = System.Drawing.Color.Gainsboro;
             this.cum.Location = new System.Drawing.Point(441, 90);
             this.cum.Name = "cum";
@@ -699,7 +770,7 @@ namespace ajanda
             this.cmt.AutoSize = true;
             this.cmt.BackColor = System.Drawing.Color.Transparent;
             this.cmt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cmt.ForeColor = System.Drawing.Color.Gainsboro;
             this.cmt.Location = new System.Drawing.Point(553, 90);
             this.cmt.Name = "cmt";
@@ -712,7 +783,7 @@ namespace ajanda
             this.paz.AutoSize = true;
             this.paz.BackColor = System.Drawing.Color.Transparent;
             this.paz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.paz.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.paz.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.paz.ForeColor = System.Drawing.Color.Gainsboro;
             this.paz.Location = new System.Drawing.Point(659, 90);
             this.paz.Name = "paz";
@@ -722,7 +793,7 @@ namespace ajanda
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(206, 26);
+            this.progressBar1.Location = new System.Drawing.Point(849, 680);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(352, 37);
             this.progressBar1.TabIndex = 3;
@@ -827,61 +898,104 @@ namespace ajanda
             // 
             this.button36.BackColor = System.Drawing.Color.Transparent;
             this.button36.FlatAppearance.BorderSize = 0;
-            this.button36.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button36.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button36.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button36.ForeColor = System.Drawing.Color.Gainsboro;
             this.button36.Location = new System.Drawing.Point(9, 662);
             this.button36.Name = "button36";
             this.button36.Size = new System.Drawing.Size(100, 100);
-            this.button36.TabIndex = 100;
+            this.button36.TabIndex = 36;
+            this.button36.TabStop = false;
             this.button36.Text = "button1";
-            this.button36.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button36.UseVisualStyleBackColor = false;
+            this.button36.MouseLeave += new System.EventHandler(this.button36_MouseLeave);
+            this.button36.MouseHover += new System.EventHandler(this.button36_MouseHover);
             // 
             // button37
             // 
             this.button37.BackColor = System.Drawing.Color.Transparent;
             this.button37.FlatAppearance.BorderSize = 0;
-            this.button37.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button37.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button37.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button37.ForeColor = System.Drawing.Color.Gainsboro;
             this.button37.Location = new System.Drawing.Point(115, 662);
             this.button37.Name = "button37";
             this.button37.Size = new System.Drawing.Size(100, 100);
-            this.button37.TabIndex = 100;
+            this.button37.TabIndex = 37;
+            this.button37.TabStop = false;
             this.button37.Text = "button1";
-            this.button37.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button37.UseVisualStyleBackColor = false;
+            this.button37.MouseLeave += new System.EventHandler(this.button37_MouseLeave);
+            this.button37.MouseHover += new System.EventHandler(this.button37_MouseHover);
             // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Transparent;
             this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.Gainsboro;
             this.button4.Location = new System.Drawing.Point(327, 133);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 100);
-            this.button4.TabIndex = 100;
+            this.button4.TabIndex = 4;
+            this.button4.TabStop = false;
             this.button4.Text = "button1";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
+            this.button4.MouseHover += new System.EventHandler(this.button4_MouseHover);
+            // 
+            // ekle
+            // 
+            this.ekle.AutoSize = true;
+            this.ekle.BackColor = System.Drawing.Color.Transparent;
+            this.ekle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ekle.Font = new System.Drawing.Font("Minion Pro", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ekle.ForeColor = System.Drawing.Color.Silver;
+            this.ekle.Location = new System.Drawing.Point(670, 680);
+            this.ekle.Name = "ekle";
+            this.ekle.Size = new System.Drawing.Size(90, 111);
+            this.ekle.TabIndex = 2;
+            this.ekle.Text = "+";
+            this.ekle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ekle.UseCompatibleTextRendering = true;
+            this.ekle.Click += new System.EventHandler(this.ekle_Click);
+            this.ekle.MouseLeave += new System.EventHandler(this.ekle_MouseLeave);
+            this.ekle.MouseHover += new System.EventHandler(this.ekle_MouseHover);
+            // 
+            // label_gun
+            // 
+            this.label_gun.AutoSize = true;
+            this.label_gun.BackColor = System.Drawing.Color.Transparent;
+            this.label_gun.Font = new System.Drawing.Font("Minion Pro", 44F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_gun.ForeColor = System.Drawing.Color.Silver;
+            this.label_gun.Location = new System.Drawing.Point(239, 13);
+            this.label_gun.Name = "label_gun";
+            this.label_gun.Size = new System.Drawing.Size(293, 69);
+            this.label_gun.TabIndex = 2;
+            this.label_gun.Text = "29.12.2029";
+            this.label_gun.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_gun.UseCompatibleTextRendering = true;
+            this.label_gun.Click += new System.EventHandler(this.label_yil_Click);
+            this.label_gun.MouseLeave += new System.EventHandler(this.label_yil_MouseLeave);
+            this.label_gun.MouseHover += new System.EventHandler(this.label_yil_MouseHover);
             // 
             // Anasayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.BackgroundImage = global::ajanda.Properties.Resources.home_background2;
+            this.BackgroundImage = global::ajanda.Properties.Resources.home_background22;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(758, 775);
+            this.ClientSize = new System.Drawing.Size(1230, 775);
             this.Controls.Add(this.label_ay);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.ekle);
+            this.Controls.Add(this.label_gun);
             this.Controls.Add(this.label_yil);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label8);
@@ -995,6 +1109,8 @@ namespace ajanda
         public System.Windows.Forms.Button button36;
         public System.Windows.Forms.Button button37;
         public System.Windows.Forms.Button button4;
+        public System.Windows.Forms.Label ekle;
+        public System.Windows.Forms.Label label_gun;
     }
 }
 

@@ -10,3 +10,4 @@ D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.Anasayfa.resources
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.aylar.resources
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.yillar.resources
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.csprojAssemblyReference.cache
+D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.Ekle.resources

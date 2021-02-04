@@ -47,9 +47,10 @@ namespace ajanda
             // 
             this.but1.BackColor = System.Drawing.Color.Transparent;
             this.but1.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.but1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.but1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Azure;
-            this.but1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+            this.but1.FlatAppearance.BorderSize = 0;
+            this.but1.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.but1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.but1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.but1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but1.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.but1.Location = new System.Drawing.Point(48, 11);
@@ -61,14 +62,17 @@ namespace ajanda
             this.but1.Text = "2021";
             this.but1.UseVisualStyleBackColor = false;
             this.but1.Click += new System.EventHandler(this.but1_Click);
+            this.but1.MouseLeave += new System.EventHandler(this.but1_MouseLeave);
+            this.but1.MouseHover += new System.EventHandler(this.but1_MouseHover);
             // 
             // but6
             // 
             this.but6.BackColor = System.Drawing.Color.Transparent;
             this.but6.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.but6.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.but6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Azure;
-            this.but6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+            this.but6.FlatAppearance.BorderSize = 0;
+            this.but6.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.but6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.but6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.but6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but6.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.but6.Location = new System.Drawing.Point(48, 104);
@@ -80,14 +84,17 @@ namespace ajanda
             this.but6.Text = "2021";
             this.but6.UseVisualStyleBackColor = false;
             this.but6.Click += new System.EventHandler(this.but6_Click);
+            this.but6.MouseLeave += new System.EventHandler(this.but6_MouseLeave);
+            this.but6.MouseHover += new System.EventHandler(this.but6_MouseHover);
             // 
             // but2
             // 
             this.but2.BackColor = System.Drawing.Color.Transparent;
             this.but2.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.but2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.but2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Azure;
-            this.but2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+            this.but2.FlatAppearance.BorderSize = 0;
+            this.but2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.but2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.but2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.but2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but2.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.but2.Location = new System.Drawing.Point(129, 12);
@@ -99,14 +106,17 @@ namespace ajanda
             this.but2.Text = "2021";
             this.but2.UseVisualStyleBackColor = false;
             this.but2.Click += new System.EventHandler(this.but2_Click);
+            this.but2.MouseLeave += new System.EventHandler(this.but2_MouseLeave);
+            this.but2.MouseHover += new System.EventHandler(this.but2_MouseHover);
             // 
             // but7
             // 
             this.but7.BackColor = System.Drawing.Color.Transparent;
             this.but7.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.but7.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.but7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Azure;
-            this.but7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+            this.but7.FlatAppearance.BorderSize = 0;
+            this.but7.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.but7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.but7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.but7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but7.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.but7.Location = new System.Drawing.Point(129, 105);
@@ -118,14 +128,17 @@ namespace ajanda
             this.but7.Text = "2021";
             this.but7.UseVisualStyleBackColor = false;
             this.but7.Click += new System.EventHandler(this.but7_Click);
+            this.but7.MouseLeave += new System.EventHandler(this.but7_MouseLeave);
+            this.but7.MouseHover += new System.EventHandler(this.but7_MouseHover);
             // 
             // but3
             // 
             this.but3.BackColor = System.Drawing.Color.Transparent;
             this.but3.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.but3.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.but3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Azure;
-            this.but3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+            this.but3.FlatAppearance.BorderSize = 0;
+            this.but3.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.but3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.but3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.but3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but3.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.but3.Location = new System.Drawing.Point(210, 12);
@@ -137,14 +150,17 @@ namespace ajanda
             this.but3.Text = "2021";
             this.but3.UseVisualStyleBackColor = false;
             this.but3.Click += new System.EventHandler(this.but3_Click);
+            this.but3.MouseLeave += new System.EventHandler(this.but3_MouseLeave);
+            this.but3.MouseHover += new System.EventHandler(this.but3_MouseHover);
             // 
             // but8
             // 
             this.but8.BackColor = System.Drawing.Color.Transparent;
             this.but8.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.but8.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.but8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Azure;
-            this.but8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+            this.but8.FlatAppearance.BorderSize = 0;
+            this.but8.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.but8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.but8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.but8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but8.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.but8.Location = new System.Drawing.Point(210, 105);
@@ -156,14 +172,17 @@ namespace ajanda
             this.but8.Text = "2021";
             this.but8.UseVisualStyleBackColor = false;
             this.but8.Click += new System.EventHandler(this.but8_Click);
+            this.but8.MouseLeave += new System.EventHandler(this.but8_MouseLeave);
+            this.but8.MouseHover += new System.EventHandler(this.but8_MouseHover);
             // 
             // but4
             // 
             this.but4.BackColor = System.Drawing.Color.Transparent;
             this.but4.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.but4.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.but4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Azure;
-            this.but4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+            this.but4.FlatAppearance.BorderSize = 0;
+            this.but4.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.but4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.but4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.but4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but4.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.but4.Location = new System.Drawing.Point(291, 11);
@@ -175,14 +194,17 @@ namespace ajanda
             this.but4.Text = "2021";
             this.but4.UseVisualStyleBackColor = false;
             this.but4.Click += new System.EventHandler(this.but4_Click);
+            this.but4.MouseLeave += new System.EventHandler(this.but4_MouseLeave);
+            this.but4.MouseHover += new System.EventHandler(this.but4_MouseHover);
             // 
             // but5
             // 
             this.but5.BackColor = System.Drawing.Color.Transparent;
             this.but5.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.but5.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.but5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Azure;
-            this.but5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+            this.but5.FlatAppearance.BorderSize = 0;
+            this.but5.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.but5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.but5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.but5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but5.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.but5.Location = new System.Drawing.Point(372, 12);
@@ -194,14 +216,17 @@ namespace ajanda
             this.but5.Text = "2021";
             this.but5.UseVisualStyleBackColor = false;
             this.but5.Click += new System.EventHandler(this.but5_Click);
+            this.but5.MouseLeave += new System.EventHandler(this.but5_MouseLeave);
+            this.but5.MouseHover += new System.EventHandler(this.but5_MouseHover);
             // 
             // but9
             // 
             this.but9.BackColor = System.Drawing.Color.Transparent;
             this.but9.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.but9.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.but9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Azure;
-            this.but9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+            this.but9.FlatAppearance.BorderSize = 0;
+            this.but9.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.but9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.but9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.but9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but9.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.but9.Location = new System.Drawing.Point(291, 104);
@@ -213,14 +238,17 @@ namespace ajanda
             this.but9.Text = "2021";
             this.but9.UseVisualStyleBackColor = false;
             this.but9.Click += new System.EventHandler(this.but9_Click);
+            this.but9.MouseLeave += new System.EventHandler(this.but9_MouseLeave);
+            this.but9.MouseHover += new System.EventHandler(this.but9_MouseHover);
             // 
             // but10
             // 
             this.but10.BackColor = System.Drawing.Color.Transparent;
             this.but10.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.but10.FlatAppearance.CheckedBackColor = System.Drawing.Color.Black;
-            this.but10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Azure;
-            this.but10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+            this.but10.FlatAppearance.BorderSize = 0;
+            this.but10.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.but10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.but10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.but10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but10.Font = new System.Drawing.Font("Minion Pro", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.but10.Location = new System.Drawing.Point(372, 105);
@@ -232,15 +260,17 @@ namespace ajanda
             this.but10.Text = "2021";
             this.but10.UseVisualStyleBackColor = false;
             this.but10.Click += new System.EventHandler(this.but10_Click);
+            this.but10.MouseLeave += new System.EventHandler(this.but10_MouseLeave);
+            this.but10.MouseHover += new System.EventHandler(this.but10_MouseHover);
             // 
             // button10
             // 
             this.button10.BackColor = System.Drawing.Color.Transparent;
             this.button10.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatAppearance.CheckedBackColor = System.Drawing.Color.AliceBlue;
-            this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button10.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Image = global::ajanda.Properties.Resources.ok_sol;
             this.button10.Location = new System.Drawing.Point(5, 11);
@@ -249,15 +279,17 @@ namespace ajanda
             this.button10.TabIndex = 2;
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.button10.MouseLeave += new System.EventHandler(this.button10_MouseLeave);
+            this.button10.MouseHover += new System.EventHandler(this.button10_MouseHover);
             // 
             // button11
             // 
             this.button11.BackColor = System.Drawing.Color.Transparent;
             this.button11.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatAppearance.CheckedBackColor = System.Drawing.Color.AliceBlue;
-            this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.AliceBlue;
-            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button11.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Image = global::ajanda.Properties.Resources.ok_sag2;
             this.button11.Location = new System.Drawing.Point(453, 11);
@@ -266,6 +298,8 @@ namespace ajanda
             this.button11.TabIndex = 2;
             this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.button11.MouseLeave += new System.EventHandler(this.button11_MouseLeave);
+            this.button11.MouseHover += new System.EventHandler(this.button11_MouseHover);
             // 
             // Yillar
             // 
