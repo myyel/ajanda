@@ -21,7 +21,8 @@ namespace ajanda
         }
         private void Ekle_Load(object sender, EventArgs e)
         {
-            
+            dateTimePicker1.Value = DateTime.Now.Date;
+            dateTimePicker2.Value = DateTime.Now.AddDays(1);            
         }
 
         public void mesaj()
@@ -33,7 +34,7 @@ namespace ajanda
         private void button2_Click(object sender, EventArgs e)
         {
             dateTimePicker1.Value = DateTime.Now;
-            dateTimePicker2.Value = DateTime.Now;
+            dateTimePicker2.Value = DateTime.Now.AddDays(1);
             richTextBox1.Clear();
             textBox1.Clear();
             textBox2.Clear();
@@ -43,12 +44,26 @@ namespace ajanda
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            dateTimePicker2.MinDate = dateTimePicker1.Value;
+            dateTimePicker2.MinDate = dateTimePicker1.Value.AddDays(1);
+            DateTime x = dateTimePicker1.Value;
+            DateTime y = dateTimePicker2.Value;
+            TimeSpan sonuc = y - x;
+            decimal z = Convert.ToDecimal(sonuc.TotalDays);
+            textBox3.Text = Math.Floor(z).ToString();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime x = dateTimePicker1.Value;
+            DateTime y = dateTimePicker2.Value;
+            TimeSpan sonuc = y - x;
+            decimal z= Convert.ToDecimal(sonuc.TotalDays);
+            textBox3.Text=Math.Floor(z).ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.Text==""||textBox1.Text==""||textBox2.Text==""||textBox3.Text=="")
+            if (richTextBox1.Text==""||textBox1.Text==""||textBox2.Text=="")
             {
                 mesaj();
             }
@@ -72,6 +87,8 @@ namespace ajanda
                     baglanti.Open();
                     hedef_ekle.ExecuteNonQuery();
                     baglanti.Close();
+                    DateTime bt = dateTimePicker1.Value;
+                    planla(bt, hedef, cs, cgs);
                 }
                 catch (Exception)
                 {
@@ -79,14 +96,51 @@ namespace ajanda
 
                 }
                 dateTimePicker1.Value = DateTime.Now;
-                dateTimePicker2.Value = DateTime.Now;
+                dateTimePicker2.Value = DateTime.Now.AddDays(1);
                 richTextBox1.Clear();
                 textBox1.Clear();
                 textBox2.Clear();
                 textBox3.Clear();
                 dateTimePicker1.Focus();
                 MessageBox.Show("Hedef planlandı");
+                dateTimePicker1.Value = DateTime.Now.Date;
+                dateTimePicker2.Value = DateTime.Now.AddDays(1);
             }
+        }
+
+        // planlar tablosuna hedefleri ekle
+        public void planla(DateTime baslangic_tarihi, string hedef, int cs, int cgs)
+        {
+            string sorgu = " select hedef_id from hedefler where hedef='" + hedef + "'";
+            SqlCommand hedef_id_al = new SqlCommand(sorgu, baglanti);
+            baglanti.Open();
+            string hedef_id2 = hedef_id_al.ExecuteScalar().ToString();
+            int hedef_id = Convert.ToInt32(hedef_id2);
+            int mod = cs % cgs;
+            int calisma_sayisi = cs - mod;
+            
+            DateTime gun = dateTimePicker1.Value;
+            for (int y = cgs; y > 0; y--)
+            {
+                int z = calisma_sayisi / cgs;
+                for (int x = z; x>0; x--)
+                {
+                    string[] day = gun.ToString().Split();
+                    string ekle_sorgu = "insert into planlar(gun,hedef_id) values('" + day[0] + "','" + hedef_id + "')";
+                    SqlCommand plan_ekle = new SqlCommand(ekle_sorgu, baglanti);
+                    plan_ekle.ExecuteNonQuery();
+
+                    if (mod != 0)
+                    {
+                        mod--;
+                        string ekle_sorgu2 = "insert into planlar(gun,hedef_id) values('" + day[0] + "','" + hedef_id + "')";
+                        SqlCommand plan_ekle2 = new SqlCommand(ekle_sorgu2, baglanti);
+                        plan_ekle2.ExecuteNonQuery();                        
+                    }
+                }
+                gun = gun.AddDays(1);
+            }
+            baglanti.Close();
         }
     }
 }

@@ -121,6 +121,7 @@ namespace ajanda
             this.button2.Tag = "as";
             this.button2.Text = "button1";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button1_Click);
             this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
             this.button2.MouseHover += new System.EventHandler(this.button2_MouseHover);
             // 
@@ -139,6 +140,7 @@ namespace ajanda
             this.button3.TabStop = false;
             this.button3.Text = "button1";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button1_Click);
             this.button3.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
             this.button3.MouseHover += new System.EventHandler(this.button3_MouseHover);
             // 
@@ -157,6 +159,7 @@ namespace ajanda
             this.button5.TabStop = false;
             this.button5.Text = "button1";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button1_Click);
             this.button5.MouseLeave += new System.EventHandler(this.button5_MouseLeave);
             this.button5.MouseHover += new System.EventHandler(this.button5_MouseHover);
             // 
@@ -175,6 +178,7 @@ namespace ajanda
             this.button6.TabStop = false;
             this.button6.Text = "button1";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button1_Click);
             this.button6.MouseLeave += new System.EventHandler(this.button6_MouseLeave);
             this.button6.MouseHover += new System.EventHandler(this.button6_MouseHover);
             // 
@@ -193,6 +197,7 @@ namespace ajanda
             this.button7.TabStop = false;
             this.button7.Text = "button1";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button1_Click);
             this.button7.MouseLeave += new System.EventHandler(this.button7_MouseLeave);
             this.button7.MouseHover += new System.EventHandler(this.button7_MouseHover);
             // 
@@ -211,6 +216,7 @@ namespace ajanda
             this.button8.TabStop = false;
             this.button8.Text = "button1";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button1_Click);
             this.button8.MouseLeave += new System.EventHandler(this.button8_MouseLeave);
             this.button8.MouseHover += new System.EventHandler(this.button8_MouseHover);
             // 
@@ -229,6 +235,7 @@ namespace ajanda
             this.button9.TabStop = false;
             this.button9.Text = "button1";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button1_Click);
             this.button9.MouseLeave += new System.EventHandler(this.button9_MouseLeave);
             this.button9.MouseHover += new System.EventHandler(this.button9_MouseHover);
             // 
@@ -247,6 +254,7 @@ namespace ajanda
             this.button10.TabStop = false;
             this.button10.Text = "button1";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button1_Click);
             this.button10.MouseLeave += new System.EventHandler(this.button10_MouseLeave);
             this.button10.MouseHover += new System.EventHandler(this.button10_MouseHover);
             // 
@@ -265,6 +273,7 @@ namespace ajanda
             this.button11.TabStop = false;
             this.button11.Text = "button1";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button1_Click);
             this.button11.MouseLeave += new System.EventHandler(this.button11_MouseLeave);
             this.button11.MouseHover += new System.EventHandler(this.button11_MouseHover);
             // 
@@ -283,6 +292,7 @@ namespace ajanda
             this.button12.TabStop = false;
             this.button12.Text = "button1";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button1_Click);
             this.button12.MouseLeave += new System.EventHandler(this.button12_MouseLeave);
             this.button12.MouseHover += new System.EventHandler(this.button12_MouseHover);
             // 
@@ -301,6 +311,7 @@ namespace ajanda
             this.button13.TabStop = false;
             this.button13.Text = "button1";
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button1_Click);
             this.button13.MouseLeave += new System.EventHandler(this.button13_MouseLeave);
             this.button13.MouseHover += new System.EventHandler(this.button13_MouseHover);
             // 
@@ -319,6 +330,7 @@ namespace ajanda
             this.button14.TabStop = false;
             this.button14.Text = "button1";
             this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button1_Click);
             this.button14.MouseLeave += new System.EventHandler(this.button14_MouseLeave_1);
             this.button14.MouseHover += new System.EventHandler(this.button14_MouseHover);
             // 
@@ -337,6 +349,7 @@ namespace ajanda
             this.button15.TabStop = false;
             this.button15.Text = "button1";
             this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button1_Click);
             this.button15.MouseLeave += new System.EventHandler(this.button15_MouseLeave);
             this.button15.MouseHover += new System.EventHandler(this.button15_MouseHover);
             // 
@@ -355,6 +368,7 @@ namespace ajanda
             this.button16.TabStop = false;
             this.button16.Text = "button1";
             this.button16.UseVisualStyleBackColor = false;
+            this.button16.Click += new System.EventHandler(this.button1_Click);
             this.button16.MouseLeave += new System.EventHandler(this.button16_MouseLeave);
             this.button16.MouseHover += new System.EventHandler(this.button16_MouseHover);
             // 
@@ -373,6 +387,7 @@ namespace ajanda
             this.button22.TabStop = false;
             this.button22.Text = "button1";
             this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.button1_Click);
             this.button22.MouseLeave += new System.EventHandler(this.button22_MouseLeave);
             this.button22.MouseHover += new System.EventHandler(this.button22_MouseHover);
             // 
@@ -391,6 +406,7 @@ namespace ajanda
             this.button17.TabStop = false;
             this.button17.Text = "button1";
             this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.button1_Click);
             this.button17.MouseLeave += new System.EventHandler(this.button17_MouseLeave);
             this.button17.MouseHover += new System.EventHandler(this.button17_MouseHover);
             // 
@@ -409,6 +425,7 @@ namespace ajanda
             this.button23.TabStop = false;
             this.button23.Text = "button1";
             this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.button1_Click);
             this.button23.MouseLeave += new System.EventHandler(this.button23_MouseLeave);
             this.button23.MouseHover += new System.EventHandler(this.button23_MouseHover);
             // 
@@ -427,6 +444,7 @@ namespace ajanda
             this.button24.TabStop = false;
             this.button24.Text = "button1";
             this.button24.UseVisualStyleBackColor = false;
+            this.button24.Click += new System.EventHandler(this.button1_Click);
             this.button24.MouseLeave += new System.EventHandler(this.button24_MouseLeave);
             this.button24.MouseHover += new System.EventHandler(this.button24_MouseHover);
             // 
@@ -445,6 +463,7 @@ namespace ajanda
             this.button18.TabStop = false;
             this.button18.Text = "button1";
             this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button1_Click);
             this.button18.MouseLeave += new System.EventHandler(this.button18_MouseLeave);
             this.button18.MouseHover += new System.EventHandler(this.button18_MouseHover);
             // 
@@ -463,6 +482,7 @@ namespace ajanda
             this.button25.TabStop = false;
             this.button25.Text = "button1";
             this.button25.UseVisualStyleBackColor = false;
+            this.button25.Click += new System.EventHandler(this.button1_Click);
             this.button25.MouseLeave += new System.EventHandler(this.button25_MouseLeave);
             this.button25.MouseHover += new System.EventHandler(this.button25_MouseHover);
             // 
@@ -481,6 +501,7 @@ namespace ajanda
             this.button19.TabStop = false;
             this.button19.Text = "button1";
             this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.button1_Click);
             this.button19.MouseLeave += new System.EventHandler(this.button19_MouseLeave);
             this.button19.MouseHover += new System.EventHandler(this.button19_MouseHover);
             // 
@@ -499,6 +520,7 @@ namespace ajanda
             this.button26.TabStop = false;
             this.button26.Text = "button1";
             this.button26.UseVisualStyleBackColor = false;
+            this.button26.Click += new System.EventHandler(this.button1_Click);
             this.button26.MouseLeave += new System.EventHandler(this.button26_MouseLeave);
             this.button26.MouseHover += new System.EventHandler(this.button26_MouseHover);
             // 
@@ -517,6 +539,7 @@ namespace ajanda
             this.button20.TabStop = false;
             this.button20.Text = "button1";
             this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.button1_Click);
             this.button20.MouseLeave += new System.EventHandler(this.button20_MouseLeave);
             this.button20.MouseHover += new System.EventHandler(this.button20_MouseHover);
             // 
@@ -535,6 +558,7 @@ namespace ajanda
             this.button27.TabStop = false;
             this.button27.Text = "button1";
             this.button27.UseVisualStyleBackColor = false;
+            this.button27.Click += new System.EventHandler(this.button1_Click);
             this.button27.MouseLeave += new System.EventHandler(this.button27_MouseLeave);
             this.button27.MouseHover += new System.EventHandler(this.button27_MouseHover);
             // 
@@ -553,6 +577,7 @@ namespace ajanda
             this.button21.TabStop = false;
             this.button21.Text = "button1";
             this.button21.UseVisualStyleBackColor = false;
+            this.button21.Click += new System.EventHandler(this.button1_Click);
             this.button21.MouseLeave += new System.EventHandler(this.button21_MouseLeave);
             this.button21.MouseHover += new System.EventHandler(this.button21_MouseHover);
             // 
@@ -571,6 +596,7 @@ namespace ajanda
             this.button28.TabStop = false;
             this.button28.Text = "button1";
             this.button28.UseVisualStyleBackColor = false;
+            this.button28.Click += new System.EventHandler(this.button1_Click);
             this.button28.MouseLeave += new System.EventHandler(this.button28_MouseLeave);
             this.button28.MouseHover += new System.EventHandler(this.button28_MouseHover);
             // 
@@ -589,6 +615,7 @@ namespace ajanda
             this.button29.TabStop = false;
             this.button29.Text = "button1";
             this.button29.UseVisualStyleBackColor = false;
+            this.button29.Click += new System.EventHandler(this.button1_Click);
             this.button29.MouseLeave += new System.EventHandler(this.button29_MouseLeave);
             this.button29.MouseHover += new System.EventHandler(this.button29_MouseHover);
             // 
@@ -607,6 +634,7 @@ namespace ajanda
             this.button30.TabStop = false;
             this.button30.Text = "button1";
             this.button30.UseVisualStyleBackColor = false;
+            this.button30.Click += new System.EventHandler(this.button1_Click);
             this.button30.MouseLeave += new System.EventHandler(this.button30_MouseLeave);
             this.button30.MouseHover += new System.EventHandler(this.button30_MouseHover);
             // 
@@ -625,6 +653,7 @@ namespace ajanda
             this.button31.TabStop = false;
             this.button31.Text = "button1";
             this.button31.UseVisualStyleBackColor = false;
+            this.button31.Click += new System.EventHandler(this.button1_Click);
             this.button31.MouseLeave += new System.EventHandler(this.button31_MouseLeave);
             this.button31.MouseHover += new System.EventHandler(this.button31_MouseHover);
             // 
@@ -643,6 +672,7 @@ namespace ajanda
             this.button32.TabStop = false;
             this.button32.Text = "button1";
             this.button32.UseVisualStyleBackColor = false;
+            this.button32.Click += new System.EventHandler(this.button1_Click);
             this.button32.MouseLeave += new System.EventHandler(this.button32_MouseLeave);
             this.button32.MouseHover += new System.EventHandler(this.button32_MouseHover);
             // 
@@ -661,6 +691,7 @@ namespace ajanda
             this.button33.TabStop = false;
             this.button33.Text = "button1";
             this.button33.UseVisualStyleBackColor = false;
+            this.button33.Click += new System.EventHandler(this.button1_Click);
             this.button33.MouseLeave += new System.EventHandler(this.button33_MouseLeave);
             this.button33.MouseHover += new System.EventHandler(this.button33_MouseHover);
             // 
@@ -679,6 +710,7 @@ namespace ajanda
             this.button34.TabStop = false;
             this.button34.Text = "button1";
             this.button34.UseVisualStyleBackColor = false;
+            this.button34.Click += new System.EventHandler(this.button1_Click);
             this.button34.MouseLeave += new System.EventHandler(this.button34_MouseLeave);
             this.button34.MouseHover += new System.EventHandler(this.button34_MouseHover);
             // 
@@ -697,6 +729,7 @@ namespace ajanda
             this.button35.TabStop = false;
             this.button35.Text = "button1";
             this.button35.UseVisualStyleBackColor = false;
+            this.button35.Click += new System.EventHandler(this.button1_Click);
             this.button35.MouseLeave += new System.EventHandler(this.button35_MouseLeave);
             this.button35.MouseHover += new System.EventHandler(this.button35_MouseHover);
             // 
@@ -793,9 +826,9 @@ namespace ajanda
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(849, 680);
+            this.progressBar1.Location = new System.Drawing.Point(849, 22);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(352, 37);
+            this.progressBar1.Size = new System.Drawing.Size(349, 37);
             this.progressBar1.TabIndex = 3;
             // 
             // label_ay
@@ -909,6 +942,7 @@ namespace ajanda
             this.button36.TabStop = false;
             this.button36.Text = "button1";
             this.button36.UseVisualStyleBackColor = false;
+            this.button36.Click += new System.EventHandler(this.button1_Click);
             this.button36.MouseLeave += new System.EventHandler(this.button36_MouseLeave);
             this.button36.MouseHover += new System.EventHandler(this.button36_MouseHover);
             // 
@@ -927,6 +961,7 @@ namespace ajanda
             this.button37.TabStop = false;
             this.button37.Text = "button1";
             this.button37.UseVisualStyleBackColor = false;
+            this.button37.Click += new System.EventHandler(this.button1_Click);
             this.button37.MouseLeave += new System.EventHandler(this.button37_MouseLeave);
             this.button37.MouseHover += new System.EventHandler(this.button37_MouseHover);
             // 
@@ -945,6 +980,7 @@ namespace ajanda
             this.button4.TabStop = false;
             this.button4.Text = "button1";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button1_Click);
             this.button4.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
             this.button4.MouseHover += new System.EventHandler(this.button4_MouseHover);
             // 
@@ -988,8 +1024,8 @@ namespace ajanda
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.BackgroundImage = global::ajanda.Properties.Resources.home_background22;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImage = global::ajanda.Properties.Resources.home_background2_acik;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1230, 775);
             this.Controls.Add(this.label_ay);
             this.Controls.Add(this.label3);

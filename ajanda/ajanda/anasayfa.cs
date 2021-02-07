@@ -81,8 +81,16 @@ namespace ajanda
         // anasayfa büyümesi ve yapılacaklar listesi
         public void anasayfa_list(int gun)
         {
-            this.Size = new Size(1250, 818);
-            this.BackgroundImage = Properties.Resources.home_background2_acik;
+            if (this.Size == new Size(1250, 818))
+            {
+                ekle.Location = new Point(670, 680);
+                this.Size = new Size(788, 818);
+            }
+            else
+            {
+                ekle.Location = new Point(1142, 680);
+                this.Size = new Size(1250, 818);
+            }
         }
 
         // bugünün ya da istenilen ayı bulma fonksiyonu
