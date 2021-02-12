@@ -14,7 +14,11 @@ namespace ajanda
     public partial class Anasayfa : Form
     {
         public SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-RCGP0F0\\SQLEXPRESS;Initial Catalog=db_plan;Integrated Security=True");
-       
+        public SqlConnection baglanti2 = new SqlConnection("Data Source=DESKTOP-RCGP0F0\\SQLEXPRESS;Initial Catalog=db_plan;Integrated Security=True");
+        public SqlConnection baglanti3 = new SqlConnection("Data Source=DESKTOP-RCGP0F0\\SQLEXPRESS;Initial Catalog=db_plan;Integrated Security=True");
+        public SqlConnection baglanti4 = new SqlConnection("Data Source=DESKTOP-RCGP0F0\\SQLEXPRESS;Initial Catalog=db_plan;Integrated Security=True");
+        public DataTable sanal_tablo = new DataTable();
+
         public Anasayfa()
         {
             InitializeComponent();
@@ -24,37 +28,9 @@ namespace ajanda
         public void Anasayfa_Load(object sender, EventArgs e)
         {
             this.Size = new Size(788, 818);
-            string gun = DateTime.Now.Day.ToString();
-            string mont = DateTime.Now.Month.ToString();
+            int gun = DateTime.Now.Day;
+            butons_tabs_ana(gun);
             string yil = DateTime.Now.Year.ToString();
-            if (Convert.ToInt32(DateTime.Now.Day)<10 || Convert.ToInt32(DateTime.Now.Month)<10)
-            {
-                if (Convert.ToInt32(DateTime.Now.Day) < 10)
-                {
-                    string new_mont = null;
-                    if (Convert.ToInt32(DateTime.Now.Month) < 10)
-                    {
-                        new_mont = "0" + mont;
-
-                    }
-                    else
-                    {
-                        new_mont = mont;
-                    }
-                    string tarih = "0" + gun + "." + new_mont + "." + yil;
-                    label_gun.Text = tarih;
-
-                }
-                else
-                {
-                    string tarih =  gun + "." +"0"+ mont + "." + yil;
-                    label_gun.Text = tarih;
-                }
-            }
-            else
-            {
-                
-            }
             int yil2 = Convert.ToInt32(DateTime.Now.Year);
             if (yil2 == 2021)
             {
@@ -76,20 +52,414 @@ namespace ajanda
             int ay = Convert.ToInt32(DateTime.Now.Month);
             baglanti.Close();
             ay_bulma(ay);
+            label_goster(gun);
+            
         }
 
-        // anasayfa büyümesi ve yapılacaklar listesi
-        public void anasayfa_list(int gun)
+        // anasayfa büyümesi, gösterilecek gün label ve yapılacaklar listesi
+        public void anasayfa_list()
         {
-            if (this.Size == new Size(1250, 818))
+                ekle.Location = new Point(1142, 680);
+                this.Size = new Size(1250, 818);
+
+        }
+
+        //buton click olayında
+        public void butons_clicked(object sender, EventArgs e)
+        {
+            string ad = (sender as Button).Name;
+            char ad1 = ad[6];
+            char ad2 = ad[7];
+            int gun = Convert.ToInt32((sender as Button).Text);
+            string day = (sender as Button).Text;
+            label_goster3(gun, ad1, ad2);
+            plan_listele(day);
+            butons_tabs(gun);
+            anasayfa_list();
+        }
+
+
+        // plan listesini anasayfaya aktarma
+        public void plan_listele(string day)
+        {
+            int s = 0;
+            while (s<10)
             {
-                ekle.Location = new Point(670, 680);
-                this.Size = new Size(788, 818);
+                checks_sil();
+                s++;
+            }
+            string ay = label_ay.Text;
+            string month = "";
+            switch (ay)
+            {
+                case "Ocak":
+                    month = "01";
+                    break;
+                case "Şubat":
+                    month = "02";
+                    break;
+                case "Mart":
+                    month = "03";
+                    break;
+                case "Nisan":
+                    month = "04";
+                    break;
+                case "Mayıs":
+                    month = "05";
+                    break;
+                case "Haziran":
+                    month = "06";
+                    break;
+                case "Temmuz":
+                    month = "07";
+                    break;
+                case "Ağustos":
+                    month = "08";
+                    break;
+                case "Eylül":
+                    month = "09";
+                    break;
+                case "Ekim":
+                    month = "10";
+                    break;
+                case "Kasım":
+                    month = "11";
+                    break;
+                case "Aralık":
+                    month = "12";
+                    break;
+            }
+            string year = label_yil.Text;
+            string gun = label_gun.Text;
+            label_time.Text = day + " " + ay + " " + year + "   " + gun;
+            string tarih = day + "." + month + "." + year;
+            try
+            {
+                int i = 0;
+                string sorgu = "select hedef_id from planlar where gun= '" + tarih + "'";
+                SqlCommand hedef_id_sorgu = new SqlCommand(sorgu, baglanti);
+                baglanti.Open();
+                IDataReader his = hedef_id_sorgu.ExecuteReader();
+                while (his.Read())
+                {
+                    string hedef_ids = his[0].ToString();
+                    string sorgu2 = "select hedef from hedefler where hedef_id='" + hedef_ids + "'";
+                    SqlCommand hedef_sorgu = new SqlCommand(sorgu2,baglanti2);
+                    baglanti2.Open();
+                    string hedefs = hedef_sorgu.ExecuteScalar().ToString();
+                    baglanti2.Close();
+                    if (hedef_ids!=null)
+                    {
+
+                        string sorgu3 = "select calisma_sekli from hedefler where hedef_id='" + hedef_ids + "'";
+                        SqlCommand calisma_sekli_sorgu = new SqlCommand(sorgu3, baglanti3);
+                        baglanti3.Open();
+                        string calisma_seklis = calisma_sekli_sorgu.ExecuteScalar().ToString();
+                        baglanti3.Close();
+                        string sorgu4 = "select sayi from planlar where gun='" + tarih + "' and hedef_id='" + hedef_ids + "'";
+                        SqlCommand sayi_sorgu = new SqlCommand(sorgu4, baglanti4);
+                        baglanti4.Open();
+                        string sayis = sayi_sorgu.ExecuteScalar().ToString();
+                        baglanti4.Close();
+                        string name = hedefs + " (" + sayis + " " + calisma_seklis + ")";
+                        CheckBox checks = new CheckBox();
+                        checks.Text = name;
+                        checks.BackColor = Color.Transparent;
+                        checks.ForeColor = Color.Black;
+                        checks.Font = new Font("Arial Rounded MT Bold", 14);
+                        checks.Location = new Point(836, 121 + i);
+                        checks.TabStop = false;
+                        checks.Size = new Size(359, 24);
+                        checks.TextAlign = ContentAlignment.MiddleLeft;
+                        this.Controls.Add(checks);
+                        i += 30;
+                        checks.CheckedChanged += new EventHandler(checks_checked);
+                        checks.Click += new EventHandler(plan_sil);
+                    }                    
+                }
+                baglanti.Close();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+                baglanti.Close();
+            }
+        }
+
+        public void checks_checked(object sender, EventArgs e)
+        {
+            if ((sender as CheckBox).Checked==true)
+            {
+                (sender as CheckBox).ForeColor = Color.DarkBlue;
             }
             else
             {
-                ekle.Location = new Point(1142, 680);
-                this.Size = new Size(1250, 818);
+                (sender as CheckBox).ForeColor = Color.Black;
+            }
+        }
+
+        public void checks_sil()
+        {
+            foreach (Control item in this.Controls)
+            {
+                if(item is CheckBox)
+                {
+                    this.Controls.Remove(item);
+                }
+            }
+        }
+
+        public void plan_sil(object sender, EventArgs e)
+        {
+            DialogResult secenek = MessageBox.Show("Planı Silmek İstiyor musunuz?", "Bilgilendirme Penceresi", 
+                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+
+            if (secenek == DialogResult.Yes)
+            {
+                string[] hedef = (sender as CheckBox).Text.Split();
+                string sorgu="select hedef_id from hedefler where hedef='"+hedef[0]+"'";
+                SqlCommand hedef_sorgu = new SqlCommand(sorgu, baglanti2);
+                baglanti2.Open();
+                string hedef_id = hedef_sorgu.ExecuteScalar().ToString();
+                baglanti2.Close();
+                string sorgu2 = "delete from hedefler where hedef_id='" + hedef_id + "'";
+                SqlCommand hedef_id_sorgu = new SqlCommand(sorgu2, baglanti3);
+                baglanti3.Open();
+                hedef_id_sorgu.ExecuteNonQuery();
+                baglanti3.Close();
+                string sorgu3 = "delete from planlar where hedef_id='" + hedef_id + "'";
+                SqlCommand hedef_id_sorgu2 = new SqlCommand(sorgu3, baglanti3);
+                baglanti3.Open();
+                hedef_id_sorgu2.ExecuteNonQuery();
+                baglanti3.Close();
+                string[] day = label_time.Text.Split();
+                plan_listele(day[0]);
+                
+            }
+            else if (secenek == DialogResult.No)
+            {
+                //Hayır seçeneğine tıklandığında çalıştırılacak kodlar
+            }
+            else if (secenek == DialogResult.Cancel)
+            {
+
+            }
+        }
+
+        //buton hover olayında
+        public void butons_hover(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.Silver;
+            (sender as Button).FlatAppearance.BorderSize = 2;
+        }
+
+        // buton leave olayında
+        public void butons_leave(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderSize = 0;
+        }
+
+        //buton tab number
+        public void butons_tabs_ana(int gun)
+        {
+            Button[] butons =
+                { button01, button02, button03, button04, button05, button06, button07, button08, button09, button10,
+                button11, button12, button13, button14, button15, button16, button17, button18, button19, button20,
+                button21, button22, button23, button24, button25, button26, button27, button28, button29, button30,
+                button31, button32, button33, button34, button35, button36, button37
+            };
+
+            int j = 0;
+
+            for (int i = 0; i < 37; i++)
+            {
+                if (Convert.ToInt32(butons[i].Text) == gun)
+                {
+                    break;
+                }
+
+                j = i+1;                
+            }
+
+            int a = 0;
+            for (int i = j; i < 37; i++)
+            {
+                butons[i].TabIndex = a;
+                a++;
+            }
+            for (int i = 0; i < j; i++)
+            {
+                butons[i].TabIndex = a;
+                a++;
+            }
+            butons[j].Focus();
+        }
+
+        public void butons_tabs(int gun)
+        {
+            Button[] butons =
+                { button01, button02, button03, button04, button05, button06, button07, button08, button09, button10,
+                button11, button12, button13, button14, button15, button16, button17, button18, button19, button20,
+                button21, button22, button23, button24, button25, button26, button27, button28, button29, button30,
+                button31, button32, button33, button34, button35, button36, button37
+            };
+            int a = 0;
+            for (int i = gun; i < 37; i++)
+            {
+                butons[i].TabIndex = a;
+                a++;
+            }
+            for (int i = 0; i<gun; i++)
+            {
+                butons[i].TabIndex = a;
+                a++;
+            }
+            butons[gun-1].Focus();
+        }
+
+        //seçilen günü gösterme
+        public void label_goster(int gun)
+        {
+            Label[] labels = 
+            {   lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9, lab10, lab11, lab12, lab13, lab14, lab15, 
+                lab16, lab17, lab18, lab19, lab20, lab21, lab22, lab22, lab23, lab24, lab25, lab26, lab27, lab28, 
+                lab29, lab30, lab31, lab32, lab33, lab34, lab35, lab36, lab37 
+            };
+            
+            foreach (var item in labels)
+            {
+                item.Hide();
+            }
+            Convert.ToInt32(gun);
+            labels[gun-1].Show();
+            string yil = label_yil.Text;
+            string ay = label_ay.Text;
+            DateTime tarih2 = DateTime.Parse(yil + "-" + ay + "-" + gun);
+            string gun2 = tarih2.DayOfWeek.ToString();
+            switch (gun2)
+            {
+                case "Monday":
+                    label_gun.Text = "Pazartesi";
+                    break;
+                case "Tuesday":
+                    label_gun.Text = "Salı";
+                    break;
+                case "Wednesday":
+                    label_gun.Text = "Çarşamba";
+                    break;
+                case "Thursday":
+                    label_gun.Text = "Perşembe";
+                    break;
+                case "Friday":
+                    label_gun.Text = "Cuma";
+                    break;
+                case "Saturday":
+                    label_gun.Text = "Cumartesi";
+                    break;
+                case "Sunday":
+                    label_gun.Text = "Pazar";
+                    break;
+            }
+        }
+
+        public void label_goster2(int gun, char ad1, char ad2)
+        {
+            string s = ad1.ToString() + ad2.ToString();
+            int ad = Convert.ToInt32(s);
+            Label[] labels =
+            {   lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9, lab10, lab11, lab12, lab13, lab14, lab15,
+                lab16, lab17, lab18, lab19, lab20, lab21, lab22, lab22, lab23, lab24, lab25, lab26, lab27, lab28,
+                lab29, lab30, lab31, lab32, lab33, lab34, lab35, lab36, lab37
+            };
+            foreach (var item in labels)
+            {
+                item.Hide();
+            }
+            labels[ad - 1].Show();
+        }
+
+        public void label_goster3(int gun, char ad1, char ad2)
+        {
+            string s = ad1.ToString() + ad2.ToString();
+            int ad = Convert.ToInt32(s);
+            Label[] labels =
+            {   lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9, lab10, lab11, lab12, lab13, lab14, lab15,
+                lab16, lab17, lab18, lab19, lab20, lab21, lab22, lab23, lab24, lab25, lab26, lab27, lab28,
+                lab29, lab30, lab31, lab32, lab33, lab34, lab35, lab36, lab37
+            };
+            foreach (var item in labels)
+            {
+                item.Hide();
+            }
+            labels[ad - 1].Show();
+            string yil = label_yil.Text;
+            string month = label_ay.Text;
+            int ay = 0;
+            switch (month)
+            {
+                case "Ocak":
+                    ay = 1;
+                    break;
+                case "Şubat":
+                    ay = 2;
+                    break;
+                case "Mart":
+                    ay = 3;
+                    break;
+                case "Nisan":
+                    ay = 4;
+                    break;
+                case "Mayıs":
+                    ay = 5;
+                    break;
+                case "Haziran":
+                    ay = 6;
+                    break;
+                case "Temmuz":
+                    ay = 7;
+                    break;
+                case "Ağustos":
+                    ay = 8;
+                    break;
+                case "Eylül":
+                    ay = 9;
+                    break;
+                case "Ekim":
+                    ay = 10;
+                    break;
+                case "Kasım":
+                    ay = 11;
+                    break;
+                case "Aralık":
+                    ay = 12;
+                    break;
+            }
+            DateTime tarih2 = DateTime.Parse(yil + "-" + ay + "-" + gun);
+            string gun2 = tarih2.DayOfWeek.ToString();
+            switch (gun2)
+            {
+                case "Monday":
+                    label_gun.Text = "Pazartesi";
+                    break;
+                case "Tuesday":
+                    label_gun.Text = "Salı";
+                    break;
+                case "Wednesday":
+                    label_gun.Text = "Çarşamba";
+                    break;
+                case "Thursday":
+                    label_gun.Text = "Perşembe";
+                    break;
+                case "Friday":
+                    label_gun.Text = "Cuma";
+                    break;
+                case "Saturday":
+                    label_gun.Text = "Cumartesi";
+                    break;
+                case "Sunday":
+                    label_gun.Text = "Pazar";
+                    break;
             }
         }
 
@@ -224,7 +594,8 @@ namespace ajanda
                 label8.Enabled = true;
                 label8.ForeColor = Color.DimGray;
             }
-            tarihin_gununu_bul();
+            int gun = 1;
+            tarihin_gununu_bul(gun);
         }
 
         // ay çekme fonksiyonu
@@ -293,19 +664,19 @@ namespace ajanda
                 label8.Enabled = true;
                 label8.ForeColor = Color.DimGray;
             }
-
-            tarihin_gununu_bul();
+            int gun = 1;
+            tarihin_gununu_bul(gun);
         }
 
         /* tarihlerin gününü bulma (bulduğu gün yazısını,
         ayın gün sayısınu bulma fonksiyonuna gönderir*/
-        public void tarihin_gununu_bul()
+        public void tarihin_gununu_bul(int gun)
         {
             string yil = label_yil.Text;
             string ay = label_ay.Text;
-            string tarih = yil + "-" + ay + "01";
-            string gun = DateTime.Parse(tarih).DayOfWeek.ToString();
-            ayin_gun_sayisini_bulma(gun);
+            string tarih = yil + "-" + ay + "-"+gun;
+            string gun2 = DateTime.Parse(tarih).DayOfWeek.ToString();
+            ayin_gun_sayisini_bulma(gun2);
         }
 
         /* ayın gün sayısını bulma (bulduğu ayın gün sayısını
@@ -408,493 +779,163 @@ namespace ajanda
         // günleri butona dizme
         public void buton_diz(int durum, string gun)
         {
+            Button[] butons = { button01, button02, button03, button04,button05,button06,button07,button08,button09,button10,button11,button12, button13, button14, button15,button16,button17,button18,button19,button20,button21,button22,button23,button24,button25,button26,button27,button28,button29,button30,button31,button32,button33,button34, button35,button36,button37 };
             if (durum==1)
             {
                 switch (gun)
                 {
                     case "Monday":
-                        button1.Show();
-                        button2.Show();
-                        button3.Show();
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-
-                        button1.Text = 1.ToString();
-                        button2.Text = 2.ToString();
-                        button3.Text = 3.ToString();
-                        button4.Text = 4.ToString();
-                        button5.Text = 5.ToString();
-                        button6.Text = 6.ToString();
-                        button7.Text = 7.ToString();
-                        button8.Text = 8.ToString();
-                        button9.Text = 9.ToString();
-                        button10.Text = 10.ToString();
-                        button11.Text = 11.ToString();
-                        button12.Text = 12.ToString();
-                        button13.Text = 13.ToString();
-                        button14.Text = 14.ToString();
-                        button15.Text = 15.ToString();
-                        button16.Text = 16.ToString();
-                        button17.Text = 17.ToString();
-                        button18.Text = 18.ToString();
-                        button19.Text = 19.ToString();
-                        button20.Text = 20.ToString();
-                        button21.Text = 21.ToString();
-                        button22.Text = 22.ToString();
-                        button23.Text = 23.ToString();
-                        button24.Text = 24.ToString();
-                        button25.Text = 25.ToString();
-                        button26.Text = 26.ToString();
-                        button27.Text = 27.ToString();
-                        button28.Text = 28.ToString();
-                        button29.Hide();
-                        button30.Hide();
-                        button31.Hide();
-                        button32.Hide();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Pazartesi";
+                        for (int i = 0; i < 0; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i=1; i < 29; i++)
+                        {
+                            butons[i-1].Show();
+                            butons[i-1].Text = i.ToString();
+                        }
+                        for (int i = 28; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad = button01.Name.ToCharArray();
+                        char ad1 = ad[6];
+                        char ad2 = ad[7];
+                        int gun2 = Convert.ToInt32(butons[0].Text);
+                        label_goster2(gun2, ad1, ad2);
                         break;
 
                     case "Tuesday":
-                        button2.Show();
-                        button3.Show();
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-
-                        button1.Hide();
-                        button2.Text = 1.ToString();
-                        button3.Text = 2.ToString();
-                        button4.Text = 3.ToString();
-                        button5.Text = 4.ToString();
-                        button6.Text = 5.ToString();
-                        button7.Text = 6.ToString();
-                        button8.Text = 7.ToString();
-                        button9.Text = 8.ToString();
-                        button10.Text = 9.ToString();
-                        button11.Text = 10.ToString();
-                        button12.Text = 11.ToString();
-                        button13.Text = 12.ToString();
-                        button14.Text = 13.ToString();
-                        button15.Text = 14.ToString();
-                        button16.Text = 15.ToString();
-                        button17.Text = 16.ToString();
-                        button18.Text = 17.ToString();
-                        button19.Text = 18.ToString();
-                        button20.Text = 19.ToString();
-                        button21.Text = 20.ToString();
-                        button22.Text = 21.ToString();
-                        button23.Text = 22.ToString();
-                        button24.Text = 23.ToString();
-                        button25.Text = 24.ToString();
-                        button26.Text = 25.ToString();
-                        button27.Text = 26.ToString();
-                        button28.Text = 27.ToString();
-                        button29.Text = 28.ToString();
-                        button30.Hide();
-                        button31.Hide();
-                        button32.Hide();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Salı"; 
+                        for (int i = 0; i < 1; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 29; i++)
+                        {
+                            butons[i].Show();
+                            butons[i].Text = i.ToString();
+                        }
+                        for (int i = 29; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad3 = button02.Name.ToCharArray();
+                        char ad4 = ad3[6];
+                        char ad5 = ad3[7];
+                        int gun3 = Convert.ToInt32(butons[1].Text);
+                        label_goster2(gun3, ad4, ad5);
                         break;
 
                     case "Wednesday":
-                        button3.Show();
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                       
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Text = 1.ToString();
-                        button4.Text = 2.ToString();
-                        button5.Text = 3.ToString();
-                        button6.Text = 4.ToString();
-                        button7.Text = 5.ToString();
-                        button8.Text = 6.ToString();
-                        button9.Text = 7.ToString();
-                        button10.Text = 8.ToString();
-                        button11.Text = 9.ToString();
-                        button12.Text = 10.ToString();
-                        button13.Text = 11.ToString();
-                        button14.Text = 12.ToString();
-                        button15.Text = 13.ToString();
-                        button16.Text = 14.ToString();
-                        button17.Text = 15.ToString();
-                        button18.Text = 16.ToString();
-                        button19.Text = 17.ToString();
-                        button20.Text = 18.ToString();
-                        button21.Text = 19.ToString();
-                        button22.Text = 20.ToString();
-                        button23.Text = 21.ToString();
-                        button24.Text = 22.ToString();
-                        button25.Text = 23.ToString();
-                        button26.Text = 24.ToString();
-                        button27.Text = 25.ToString();
-                        button28.Text = 26.ToString();
-                        button29.Text = 27.ToString();
-                        button30.Text = 28.ToString();
-                        button31.Hide();
-                        button32.Hide();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Çarşamba";
+                        for (int i = 0; i < 2; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 29; i++)
+                        {
+                            butons[i+1].Show();
+                            butons[i+1].Text = i.ToString();
+                        }
+                        for (int i = 30; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad6 = butons[2].Name.ToCharArray();
+                        char ad7 = ad6[6];
+                        char ad8 = ad6[7];
+                        int gun4 = Convert.ToInt32(butons[2].Text);
+                        label_goster2(gun4, ad7, ad8);                        
                         break;
 
                     case "Thursday":
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Text = 1.ToString();
-                        button5.Text = 2.ToString();
-                        button6.Text = 3.ToString();
-                        button7.Text = 4.ToString();
-                        button8.Text = 5.ToString();
-                        button9.Text = 6.ToString();
-                        button10.Text = 7.ToString();
-                        button11.Text = 8.ToString();
-                        button12.Text = 9.ToString();
-                        button13.Text = 10.ToString();
-                        button14.Text = 11.ToString();
-                        button15.Text = 12.ToString();
-                        button16.Text = 13.ToString();
-                        button17.Text = 14.ToString();
-                        button18.Text = 15.ToString();
-                        button19.Text = 16.ToString();
-                        button20.Text = 17.ToString();
-                        button21.Text = 18.ToString();
-                        button22.Text = 19.ToString();
-                        button23.Text = 20.ToString();
-                        button24.Text = 21.ToString();
-                        button25.Text = 22.ToString();
-                        button26.Text = 23.ToString();
-                        button27.Text = 24.ToString();
-                        button28.Text = 25.ToString();
-                        button29.Text = 26.ToString();
-                        button30.Text = 27.ToString();
-                        button31.Text = 28.ToString();
-                        button32.Hide();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Perşembe";
+                        for (int i = 0; i < 3; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 29; i++)
+                        {
+                            butons[i + 2].Show();
+                            butons[i + 2].Text = i.ToString();
+                        }
+                        for (int i = 31; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad9 = butons[3].Name.ToCharArray();
+                        char ad10 = ad9[6];
+                        char ad11 = ad9[7];
+                        int gun5 = Convert.ToInt32(butons[3].Text);
+                        label_goster2(gun5, ad10, ad11);                        
                         break;
 
                     case "Friday":
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Hide();
-                        button5.Text = 1.ToString();
-                        button6.Text = 2.ToString();
-                        button7.Text = 3.ToString();
-                        button8.Text = 4.ToString();
-                        button9.Text = 5.ToString();
-                        button10.Text = 6.ToString();
-                        button11.Text = 7.ToString();
-                        button12.Text = 8.ToString();
-                        button13.Text = 9.ToString();
-                        button14.Text = 10.ToString();
-                        button15.Text = 11.ToString();
-                        button16.Text = 12.ToString();
-                        button17.Text = 13.ToString();
-                        button18.Text = 14.ToString();
-                        button19.Text = 15.ToString();
-                        button20.Text = 16.ToString();
-                        button21.Text = 17.ToString();
-                        button22.Text = 18.ToString();
-                        button23.Text = 19.ToString();
-                        button24.Text = 20.ToString();
-                        button25.Text = 21.ToString();
-                        button26.Text = 22.ToString();
-                        button27.Text = 23.ToString();
-                        button28.Text = 24.ToString();
-                        button29.Text = 25.ToString();
-                        button30.Text = 26.ToString();
-                        button31.Text = 27.ToString();
-                        button32.Text = 28.ToString();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Cuma";
+                        for (int i = 0; i < 4; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 29; i++)
+                        {
+                            butons[i + 3].Show();
+                            butons[i + 3].Text = i.ToString();
+                        }
+                        for (int i = 32; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad12 = butons[4].Name.ToCharArray();
+                        char ad13 = ad12[6];
+                        char ad14 = ad12[7];
+                        int gun6 = Convert.ToInt32(butons[4].Text);
+                        label_goster2(gun6, ad13, ad14);
                         break;
 
                     case "Saturday":
-                        
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-                        
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Hide();
-                        button5.Hide();
-                        button6.Text = 1.ToString();
-                        button7.Text = 2.ToString();
-                        button8.Text = 3.ToString();
-                        button9.Text = 4.ToString();
-                        button10.Text = 5.ToString();
-                        button11.Text = 6.ToString();
-                        button12.Text = 7.ToString();
-                        button13.Text = 8.ToString();
-                        button14.Text = 9.ToString();
-                        button15.Text = 10.ToString();
-                        button16.Text = 11.ToString();
-                        button17.Text = 12.ToString();
-                        button18.Text = 13.ToString();
-                        button19.Text = 14.ToString();
-                        button20.Text = 15.ToString();
-                        button21.Text = 16.ToString();
-                        button22.Text = 17.ToString();
-                        button23.Text = 18.ToString();
-                        button24.Text = 19.ToString();
-                        button25.Text = 20.ToString();
-                        button26.Text = 21.ToString();
-                        button27.Text = 22.ToString();
-                        button28.Text = 23.ToString();
-                        button29.Text = 24.ToString();
-                        button30.Text = 25.ToString();
-                        button31.Text = 26.ToString();
-                        button32.Text = 27.ToString();
-                        button33.Text = 28.ToString();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Cumartesi";
+                        for (int i = 0; i < 5; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 29; i++)
+                        {
+                            butons[i + 4].Show();
+                            butons[i + 4].Text = i.ToString();
+                        }
+                        for (int i = 33; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad15 = butons[5].Name.ToCharArray();
+                        char ad16 = ad15[6];
+                        char ad17 = ad15[7];
+                        int gun7 = Convert.ToInt32(butons[5].Text);
+                        label_goster2(gun7, ad16, ad17);
                         break;
 
                     case "Sunday":
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-                        button34.Show();
-                        
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Hide();
-                        button5.Hide();
-                        button6.Hide();
-                        button7.Text = 1.ToString();
-                        button8.Text = 2.ToString();
-                        button9.Text = 3.ToString();
-                        button10.Text = 4.ToString();
-                        button11.Text = 5.ToString();
-                        button12.Text = 6.ToString();
-                        button13.Text = 7.ToString();
-                        button14.Text = 8.ToString();
-                        button15.Text = 9.ToString();
-                        button16.Text = 10.ToString();
-                        button17.Text = 11.ToString();
-                        button18.Text = 12.ToString();
-                        button19.Text = 13.ToString();
-                        button20.Text = 14.ToString();
-                        button21.Text = 15.ToString();
-                        button22.Text = 16.ToString();
-                        button23.Text = 17.ToString();
-                        button24.Text = 18.ToString();
-                        button25.Text = 19.ToString();
-                        button26.Text = 20.ToString();
-                        button27.Text = 21.ToString();
-                        button28.Text = 22.ToString();
-                        button29.Text = 23.ToString();
-                        button30.Text = 24.ToString();
-                        button31.Text = 25.ToString();
-                        button32.Text = 26.ToString();
-                        button33.Text = 27.ToString();
-                        button34.Text = 28.ToString();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Pazar";
+                        for (int i = 0; i < 6; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 29; i++)
+                        {
+                            butons[i + 5].Show();
+                            butons[i + 5].Text = i.ToString();
+                        }
+                        for (int i = 34; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad18 = butons[6].Name.ToCharArray();
+                        char ad19 = ad18[6];
+                        char ad20 = ad18[7];
+                        int gun8 = Convert.ToInt32(butons[6].Text);
+                        label_goster2(gun8, ad19, ad20);
                         break;
                 }
             }
@@ -903,495 +944,157 @@ namespace ajanda
                 switch (gun)
                 {
                     case "Monday":
-                        button1.Show();
-                        button2.Show();
-                        button3.Show();
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-
-                        button1.Text = 1.ToString();
-                        button2.Text = 2.ToString();
-                        button3.Text = 3.ToString();
-                        button4.Text = 4.ToString();
-                        button5.Text = 5.ToString();
-                        button6.Text = 6.ToString();
-                        button7.Text = 7.ToString();
-                        button8.Text = 8.ToString();
-                        button9.Text = 9.ToString();
-                        button10.Text = 10.ToString();
-                        button11.Text = 11.ToString();
-                        button12.Text = 12.ToString();
-                        button13.Text = 13.ToString();
-                        button14.Text = 14.ToString();
-                        button15.Text = 15.ToString();
-                        button16.Text = 16.ToString();
-                        button17.Text = 17.ToString();
-                        button18.Text = 18.ToString();
-                        button19.Text = 19.ToString();
-                        button20.Text = 20.ToString();
-                        button21.Text = 21.ToString();
-                        button22.Text = 22.ToString();
-                        button23.Text = 23.ToString();
-                        button24.Text = 24.ToString();
-                        button25.Text = 25.ToString();
-                        button26.Text = 26.ToString();
-                        button27.Text = 27.ToString();
-                        button28.Text = 28.ToString();
-                        button29.Text = 29.ToString();
-                        button30.Hide();
-                        button31.Hide();
-                        button32.Hide();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Pazartesi";
+                        for (int i = 0; i < 0; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 30; i++)
+                        {
+                            butons[i - 1].Show();
+                            butons[i - 1].Text = i.ToString();
+                        }
+                        for (int i = 29; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad = button01.Name.ToCharArray();
+                        char ad1 = ad[6];
+                        char ad2 = ad[7];
+                        int gun2 = Convert.ToInt32(butons[0].Text);
+                        label_goster2(gun2, ad1, ad2);
                         break;
 
                     case "Tuesday":
-                        button2.Show();
-                        button3.Show();
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-
-                        button1.Hide();
-                        button2.Text = 1.ToString();
-                        button3.Text = 2.ToString();
-                        button4.Text = 3.ToString();
-                        button5.Text = 4.ToString();
-                        button6.Text = 5.ToString();
-                        button7.Text = 6.ToString();
-                        button8.Text = 7.ToString();
-                        button9.Text = 8.ToString();
-                        button10.Text = 9.ToString();
-                        button11.Text = 10.ToString();
-                        button12.Text = 11.ToString();
-                        button13.Text = 12.ToString();
-                        button14.Text = 13.ToString();
-                        button15.Text = 14.ToString();
-                        button16.Text = 15.ToString();
-                        button17.Text = 16.ToString();
-                        button18.Text = 17.ToString();
-                        button19.Text = 18.ToString();
-                        button20.Text = 19.ToString();
-                        button21.Text = 20.ToString();
-                        button22.Text = 21.ToString();
-                        button23.Text = 22.ToString();
-                        button24.Text = 23.ToString();
-                        button25.Text = 24.ToString();
-                        button26.Text = 25.ToString();
-                        button27.Text = 26.ToString();
-                        button28.Text = 27.ToString();
-                        button29.Text = 28.ToString();
-                        button30.Text = 29.ToString();
-                        button31.Hide();
-                        button32.Hide();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Salı";
+                        for (int i = 0; i < 1; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 30; i++)
+                        {
+                            butons[i].Show();
+                            butons[i].Text = i.ToString();
+                        }
+                        for (int i = 30; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad3 = button02.Name.ToCharArray();
+                        char ad4 = ad3[6];
+                        char ad5 = ad3[7];
+                        int gun3 = Convert.ToInt32(butons[1].Text);
+                        label_goster2(gun3, ad4, ad5);
                         break;
 
                     case "Wednesday":
-                        button3.Show();
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Text = 1.ToString();
-                        button4.Text = 2.ToString();
-                        button5.Text = 3.ToString();
-                        button6.Text = 4.ToString();
-                        button7.Text = 5.ToString();
-                        button8.Text = 6.ToString();
-                        button9.Text = 7.ToString();
-                        button10.Text = 8.ToString();
-                        button11.Text = 9.ToString();
-                        button12.Text = 10.ToString();
-                        button13.Text = 11.ToString();
-                        button14.Text = 12.ToString();
-                        button15.Text = 13.ToString();
-                        button16.Text = 14.ToString();
-                        button17.Text = 15.ToString();
-                        button18.Text = 16.ToString();
-                        button19.Text = 17.ToString();
-                        button20.Text = 18.ToString();
-                        button21.Text = 19.ToString();
-                        button22.Text = 20.ToString();
-                        button23.Text = 21.ToString();
-                        button24.Text = 22.ToString();
-                        button25.Text = 23.ToString();
-                        button26.Text = 24.ToString();
-                        button27.Text = 25.ToString();
-                        button28.Text = 26.ToString();
-                        button29.Text = 27.ToString();
-                        button30.Text = 28.ToString();
-                        button31.Text = 29.ToString();
-                        button32.Hide();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Çarşamba";
+                        for (int i = 0; i < 2; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 30; i++)
+                        {
+                            butons[i + 1].Show();
+                            butons[i + 1].Text = i.ToString();
+                        }
+                        for (int i = 31; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad6 = butons[2].Name.ToCharArray();
+                        char ad7 = ad6[6];
+                        char ad8 = ad6[7];
+                        int gun4 = Convert.ToInt32(butons[2].Text);
+                        label_goster2(gun4, ad7, ad8);
                         break;
 
                     case "Thursday":
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Text = 1.ToString();
-                        button5.Text = 2.ToString();
-                        button6.Text = 3.ToString();
-                        button7.Text = 4.ToString();
-                        button8.Text = 5.ToString();
-                        button9.Text = 6.ToString();
-                        button10.Text = 7.ToString();
-                        button11.Text = 8.ToString();
-                        button12.Text = 9.ToString();
-                        button13.Text = 10.ToString();
-                        button14.Text = 11.ToString();
-                        button15.Text = 12.ToString();
-                        button16.Text = 13.ToString();
-                        button17.Text = 14.ToString();
-                        button18.Text = 15.ToString();
-                        button19.Text = 16.ToString();
-                        button20.Text = 17.ToString();
-                        button21.Text = 18.ToString();
-                        button22.Text = 19.ToString();
-                        button23.Text = 20.ToString();
-                        button24.Text = 21.ToString();
-                        button25.Text = 22.ToString();
-                        button26.Text = 23.ToString();
-                        button27.Text = 24.ToString();
-                        button28.Text = 25.ToString();
-                        button29.Text = 26.ToString();
-                        button30.Text = 27.ToString();
-                        button31.Text = 28.ToString();
-                        button32.Text = 29.ToString();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Perşembe";
+                        for (int i = 0; i < 3; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 30; i++)
+                        {
+                            butons[i + 2].Show();
+                            butons[i + 2].Text = i.ToString();
+                        }
+                        for (int i = 32; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad9 = butons[3].Name.ToCharArray();
+                        char ad10 = ad9[6];
+                        char ad11 = ad9[7];
+                        int gun5 = Convert.ToInt32(butons[3].Text);
+                        label_goster2(gun5, ad10, ad11);
                         break;
 
                     case "Friday":
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Hide();
-                        button5.Text = 1.ToString();
-                        button6.Text = 2.ToString();
-                        button7.Text = 3.ToString();
-                        button8.Text = 4.ToString();
-                        button9.Text = 5.ToString();
-                        button10.Text = 6.ToString();
-                        button11.Text = 7.ToString();
-                        button12.Text = 8.ToString();
-                        button13.Text = 9.ToString();
-                        button14.Text = 10.ToString();
-                        button15.Text = 11.ToString();
-                        button16.Text = 12.ToString();
-                        button17.Text = 13.ToString();
-                        button18.Text = 14.ToString();
-                        button19.Text = 15.ToString();
-                        button20.Text = 16.ToString();
-                        button21.Text = 17.ToString();
-                        button22.Text = 18.ToString();
-                        button23.Text = 19.ToString();
-                        button24.Text = 20.ToString();
-                        button25.Text = 21.ToString();
-                        button26.Text = 22.ToString();
-                        button27.Text = 23.ToString();
-                        button28.Text = 24.ToString();
-                        button29.Text = 25.ToString();
-                        button30.Text = 26.ToString();
-                        button31.Text = 27.ToString();
-                        button32.Text = 28.ToString();
-                        button33.Text = 29.ToString();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Cuma";
+                        for (int i = 0; i < 4; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 30; i++)
+                        {
+                            butons[i + 3].Show();
+                            butons[i + 3].Text = i.ToString();
+                        }
+                        for (int i = 33; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad12 = butons[4].Name.ToCharArray();
+                        char ad13 = ad12[6];
+                        char ad14 = ad12[7];
+                        int gun6 = Convert.ToInt32(butons[4].Text);
+                        label_goster2(gun6, ad13, ad14);
                         break;
 
                     case "Saturday":
-
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-                        button34.Show();
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Hide();
-                        button5.Hide();
-                        button6.Text = 1.ToString();
-                        button7.Text = 2.ToString();
-                        button8.Text = 3.ToString();
-                        button9.Text = 4.ToString();
-                        button10.Text = 5.ToString();
-                        button11.Text = 6.ToString();
-                        button12.Text = 7.ToString();
-                        button13.Text = 8.ToString();
-                        button14.Text = 9.ToString();
-                        button15.Text = 10.ToString();
-                        button16.Text = 11.ToString();
-                        button17.Text = 12.ToString();
-                        button18.Text = 13.ToString();
-                        button19.Text = 14.ToString();
-                        button20.Text = 15.ToString();
-                        button21.Text = 16.ToString();
-                        button22.Text = 17.ToString();
-                        button23.Text = 18.ToString();
-                        button24.Text = 19.ToString();
-                        button25.Text = 20.ToString();
-                        button26.Text = 21.ToString();
-                        button27.Text = 22.ToString();
-                        button28.Text = 23.ToString();
-                        button29.Text = 24.ToString();
-                        button30.Text = 25.ToString();
-                        button31.Text = 26.ToString();
-                        button32.Text = 27.ToString();
-                        button33.Text = 28.ToString();
-                        button34.Text = 29.ToString();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Cumartesi";
+                        for (int i = 0; i < 5; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 30; i++)
+                        {
+                            butons[i + 4].Show();
+                            butons[i + 4].Text = i.ToString();
+                        }
+                        for (int i = 34; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad15 = butons[5].Name.ToCharArray();
+                        char ad16 = ad15[6];
+                        char ad17 = ad15[7];
+                        int gun7 = Convert.ToInt32(butons[5].Text);
+                        label_goster2(gun7, ad16, ad17);
                         break;
 
                     case "Sunday":
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-                        button34.Show();
-                        button35.Show();
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Hide();
-                        button5.Hide();
-                        button6.Hide();
-                        button7.Text = 1.ToString();
-                        button8.Text = 2.ToString();
-                        button9.Text = 3.ToString();
-                        button10.Text = 4.ToString();
-                        button11.Text = 5.ToString();
-                        button12.Text = 6.ToString();
-                        button13.Text = 7.ToString();
-                        button14.Text = 8.ToString();
-                        button15.Text = 9.ToString();
-                        button16.Text = 10.ToString();
-                        button17.Text = 11.ToString();
-                        button18.Text = 12.ToString();
-                        button19.Text = 13.ToString();
-                        button20.Text = 14.ToString();
-                        button21.Text = 15.ToString();
-                        button22.Text = 16.ToString();
-                        button23.Text = 17.ToString();
-                        button24.Text = 18.ToString();
-                        button25.Text = 19.ToString();
-                        button26.Text = 20.ToString();
-                        button27.Text = 21.ToString();
-                        button28.Text = 22.ToString();
-                        button29.Text = 23.ToString();
-                        button30.Text = 24.ToString();
-                        button31.Text = 25.ToString();
-                        button32.Text = 26.ToString();
-                        button33.Text = 27.ToString();
-                        button34.Text = 28.ToString();
-                        button35.Text = 29.ToString();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Pazar";
+                        for (int i = 0; i < 6; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 30; i++)
+                        {
+                            butons[i + 5].Show();
+                            butons[i + 5].Text = i.ToString();
+                        }
+                        for (int i = 35; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad18 = butons[6].Name.ToCharArray();
+                        char ad19 = ad18[6];
+                        char ad20 = ad18[7];
+                        int gun8 = Convert.ToInt32(butons[6].Text);
+                        label_goster2(gun8, ad19, ad20);
                         break;
                 }
             }
@@ -1400,502 +1103,157 @@ namespace ajanda
                 switch (gun)
                 {
                     case "Monday":
-                        button1.Show();
-                        button2.Show();
-                        button3.Show();
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-
-                        button1.Text = 1.ToString();
-                        button2.Text = 2.ToString();
-                        button3.Text = 3.ToString();
-                        button4.Text = 4.ToString();
-                        button5.Text = 5.ToString();
-                        button6.Text = 6.ToString();
-                        button7.Text = 7.ToString();
-                        button8.Text = 8.ToString();
-                        button9.Text = 9.ToString();
-                        button10.Text = 10.ToString();
-                        button11.Text = 11.ToString();
-                        button12.Text = 12.ToString();
-                        button13.Text = 13.ToString();
-                        button14.Text = 14.ToString();
-                        button15.Text = 15.ToString();
-                        button16.Text = 16.ToString();
-                        button17.Text = 17.ToString();
-                        button18.Text = 18.ToString();
-                        button19.Text = 19.ToString();
-                        button20.Text = 20.ToString();
-                        button21.Text = 21.ToString();
-                        button22.Text = 22.ToString();
-                        button23.Text = 23.ToString();
-                        button24.Text = 24.ToString();
-                        button25.Text = 25.ToString();
-                        button26.Text = 26.ToString();
-                        button27.Text = 27.ToString();
-                        button28.Text = 28.ToString();
-                        button29.Text = 29.ToString();
-                        button30.Text = 30.ToString();
-                        button31.Hide();
-                        button32.Hide();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Pazartesi";
+                        for (int i = 0; i < 0; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 31; i++)
+                        {
+                            butons[i - 1].Show();
+                            butons[i - 1].Text = i.ToString();
+                        }
+                        for (int i = 30; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad = button01.Name.ToCharArray();
+                        char ad1 = ad[6];
+                        char ad2 = ad[7];
+                        int gun2 = Convert.ToInt32(butons[0].Text);
+                        label_goster2(gun2, ad1, ad2);
                         break;
 
                     case "Tuesday":
-                        button2.Show();
-                        button3.Show();
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-
-                        button1.Hide();
-                        button2.Text = 1.ToString();
-                        button3.Text = 2.ToString();
-                        button4.Text = 3.ToString();
-                        button5.Text = 4.ToString();
-                        button6.Text = 5.ToString();
-                        button7.Text = 6.ToString();
-                        button8.Text = 7.ToString();
-                        button9.Text = 8.ToString();
-                        button10.Text = 9.ToString();
-                        button11.Text = 10.ToString();
-                        button12.Text = 11.ToString();
-                        button13.Text = 12.ToString();
-                        button14.Text = 13.ToString();
-                        button15.Text = 14.ToString();
-                        button16.Text = 15.ToString();
-                        button17.Text = 16.ToString();
-                        button18.Text = 17.ToString();
-                        button19.Text = 18.ToString();
-                        button20.Text = 19.ToString();
-                        button21.Text = 20.ToString();
-                        button22.Text = 21.ToString();
-                        button23.Text = 22.ToString();
-                        button24.Text = 23.ToString();
-                        button25.Text = 24.ToString();
-                        button26.Text = 25.ToString();
-                        button27.Text = 26.ToString();
-                        button28.Text = 27.ToString();
-                        button29.Text = 28.ToString();
-                        button30.Text = 29.ToString();
-                        button31.Text = 30.ToString();
-                        button32.Hide();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Salı";
+                        for (int i = 0; i < 2; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 31; i++)
+                        {
+                            butons[i].Show();
+                            butons[i].Text = i.ToString();
+                        }
+                        for (int i = 31; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad3 = button02.Name.ToCharArray();
+                        char ad4 = ad3[6];
+                        char ad5 = ad3[7];
+                        int gun3 = Convert.ToInt32(butons[1].Text);
+                        label_goster2(gun3, ad4, ad5);
                         break;
 
                     case "Wednesday":
-                        button3.Show();
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Text = 1.ToString();
-                        button4.Text = 2.ToString();
-                        button5.Text = 3.ToString();
-                        button6.Text = 4.ToString();
-                        button7.Text = 5.ToString();
-                        button8.Text = 6.ToString();
-                        button9.Text = 7.ToString();
-                        button10.Text = 8.ToString();
-                        button11.Text = 9.ToString();
-                        button12.Text = 10.ToString();
-                        button13.Text = 11.ToString();
-                        button14.Text = 12.ToString();
-                        button15.Text = 13.ToString();
-                        button16.Text = 14.ToString();
-                        button17.Text = 15.ToString();
-                        button18.Text = 16.ToString();
-                        button19.Text = 17.ToString();
-                        button20.Text = 18.ToString();
-                        button21.Text = 19.ToString();
-                        button22.Text = 20.ToString();
-                        button23.Text = 21.ToString();
-                        button24.Text = 22.ToString();
-                        button25.Text = 23.ToString();
-                        button26.Text = 24.ToString();
-                        button27.Text = 25.ToString();
-                        button28.Text = 26.ToString();
-                        button29.Text = 27.ToString();
-                        button30.Text = 28.ToString();
-                        button31.Text = 29.ToString();
-                        button32.Text = 30.ToString();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Çarşamba";
+                        for (int i = 0; i < 3; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 31; i++)
+                        {
+                            butons[i + 1].Show();
+                            butons[i + 1].Text = i.ToString();
+                        }
+                        for (int i = 32; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad6 = butons[2].Name.ToCharArray();
+                        char ad7 = ad6[6];
+                        char ad8 = ad6[7];
+                        int gun4 = Convert.ToInt32(butons[2].Text);
+                        label_goster2(gun4, ad7, ad8);
                         break;
 
                     case "Thursday":
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Text = 1.ToString();
-                        button5.Text = 2.ToString();
-                        button6.Text = 3.ToString();
-                        button7.Text = 4.ToString();
-                        button8.Text = 5.ToString();
-                        button9.Text = 6.ToString();
-                        button10.Text = 7.ToString();
-                        button11.Text = 8.ToString();
-                        button12.Text = 9.ToString();
-                        button13.Text = 10.ToString();
-                        button14.Text = 11.ToString();
-                        button15.Text = 12.ToString();
-                        button16.Text = 13.ToString();
-                        button17.Text = 14.ToString();
-                        button18.Text = 15.ToString();
-                        button19.Text = 16.ToString();
-                        button20.Text = 17.ToString();
-                        button21.Text = 18.ToString();
-                        button22.Text = 19.ToString();
-                        button23.Text = 20.ToString();
-                        button24.Text = 21.ToString();
-                        button25.Text = 22.ToString();
-                        button26.Text = 23.ToString();
-                        button27.Text = 24.ToString();
-                        button28.Text = 25.ToString();
-                        button29.Text = 26.ToString();
-                        button30.Text = 27.ToString();
-                        button31.Text = 28.ToString();
-                        button32.Text = 29.ToString();
-                        button33.Text = 30.ToString();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Perşembe";
+                        for (int i = 0; i < 4; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 31; i++)
+                        {
+                            butons[i + 2].Show();
+                            butons[i + 2].Text = i.ToString();
+                        }
+                        for (int i = 33; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad9 = butons[3].Name.ToCharArray();
+                        char ad10 = ad9[6];
+                        char ad11 = ad9[7];
+                        int gun5 = Convert.ToInt32(butons[3].Text);
+                        label_goster2(gun5, ad10, ad11);
                         break;
 
                     case "Friday":
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-                        button34.Show();
-
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Hide();
-                        button5.Text = 1.ToString();
-                        button6.Text = 2.ToString();
-                        button7.Text = 3.ToString();
-                        button8.Text = 4.ToString();
-                        button9.Text = 5.ToString();
-                        button10.Text = 6.ToString();
-                        button11.Text = 7.ToString();
-                        button12.Text = 8.ToString();
-                        button13.Text = 9.ToString();
-                        button14.Text = 10.ToString();
-                        button15.Text = 11.ToString();
-                        button16.Text = 12.ToString();
-                        button17.Text = 13.ToString();
-                        button18.Text = 14.ToString();
-                        button19.Text = 15.ToString();
-                        button20.Text = 16.ToString();
-                        button21.Text = 17.ToString();
-                        button22.Text = 18.ToString();
-                        button23.Text = 19.ToString();
-                        button24.Text = 20.ToString();
-                        button25.Text = 21.ToString();
-                        button26.Text = 22.ToString();
-                        button27.Text = 23.ToString();
-                        button28.Text = 24.ToString();
-                        button29.Text = 25.ToString();
-                        button30.Text = 26.ToString();
-                        button31.Text = 27.ToString();
-                        button32.Text = 28.ToString();
-                        button33.Text = 29.ToString();
-                        button34.Text = 30.ToString();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Cuma";
+                        for (int i = 0; i < 5; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 31; i++)
+                        {
+                            butons[i + 3].Show();
+                            butons[i + 3].Text = i.ToString();
+                        }
+                        for (int i = 34; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad12 = butons[4].Name.ToCharArray();
+                        char ad13 = ad12[6];
+                        char ad14 = ad12[7];
+                        int gun6 = Convert.ToInt32(butons[4].Text);
+                        label_goster2(gun6, ad13, ad14);
                         break;
 
                     case "Saturday":
-
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-                        button34.Show();
-                        button35.Show();
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Hide();
-                        button5.Hide();
-                        button6.Text = 1.ToString();
-                        button7.Text = 2.ToString();
-                        button8.Text = 3.ToString();
-                        button9.Text = 4.ToString();
-                        button10.Text = 5.ToString();
-                        button11.Text = 6.ToString();
-                        button12.Text = 7.ToString();
-                        button13.Text = 8.ToString();
-                        button14.Text = 9.ToString();
-                        button15.Text = 10.ToString();
-                        button16.Text = 11.ToString();
-                        button17.Text = 12.ToString();
-                        button18.Text = 13.ToString();
-                        button19.Text = 14.ToString();
-                        button20.Text = 15.ToString();
-                        button21.Text = 16.ToString();
-                        button22.Text = 17.ToString();
-                        button23.Text = 18.ToString();
-                        button24.Text = 19.ToString();
-                        button25.Text = 20.ToString();
-                        button26.Text = 21.ToString();
-                        button27.Text = 22.ToString();
-                        button28.Text = 23.ToString();
-                        button29.Text = 24.ToString();
-                        button30.Text = 25.ToString();
-                        button31.Text = 26.ToString();
-                        button32.Text = 27.ToString();
-                        button33.Text = 28.ToString();
-                        button34.Text = 29.ToString();
-                        button35.Text = 30.ToString();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Cumartesi";
+                        for (int i = 0; i < 6; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 31; i++)
+                        {
+                            butons[i + 4].Show();
+                            butons[i + 4].Text = i.ToString();
+                        }
+                        for (int i = 35; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad15 = butons[5].Name.ToCharArray();
+                        char ad16 = ad15[6];
+                        char ad17 = ad15[7];
+                        int gun7 = Convert.ToInt32(butons[5].Text);
+                        label_goster2(gun7, ad16, ad17);
                         break;
 
                     case "Sunday":
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-                        button34.Show();
-                        button35.Show();
-                        button36.Show();
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Hide();
-                        button5.Hide();
-                        button6.Hide();
-                        button7.Text = 1.ToString();
-                        button8.Text = 2.ToString();
-                        button9.Text = 3.ToString();
-                        button10.Text = 4.ToString();
-                        button11.Text = 5.ToString();
-                        button12.Text = 6.ToString();
-                        button13.Text = 7.ToString();
-                        button14.Text = 8.ToString();
-                        button15.Text = 9.ToString();
-                        button16.Text = 10.ToString();
-                        button17.Text = 11.ToString();
-                        button18.Text = 12.ToString();
-                        button19.Text = 13.ToString();
-                        button20.Text = 14.ToString();
-                        button21.Text = 15.ToString();
-                        button22.Text = 16.ToString();
-                        button23.Text = 17.ToString();
-                        button24.Text = 18.ToString();
-                        button25.Text = 19.ToString();
-                        button26.Text = 20.ToString();
-                        button27.Text = 21.ToString();
-                        button28.Text = 22.ToString();
-                        button29.Text = 23.ToString();
-                        button30.Text = 24.ToString();
-                        button31.Text = 25.ToString();
-                        button32.Text = 26.ToString();
-                        button33.Text = 27.ToString();
-                        button34.Text = 28.ToString();
-                        button35.Text = 29.ToString();
-                        button36.Text = 30.ToString();
-                        button37.Hide();
+                        label_gun.Text = "Pazar";
+                        for (int i = 0; i < 7; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 31; i++)
+                        {
+                            butons[i + 5].Show();
+                            butons[i + 5].Text = i.ToString();
+                        }
+                        for (int i = 36; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad18 = butons[6].Name.ToCharArray();
+                        char ad19 = ad18[6];
+                        char ad20 = ad18[7];
+                        int gun8 = Convert.ToInt32(butons[6].Text);
+                        label_goster2(gun8, ad19, ad20);
                         break;
                 }
             }
@@ -1904,525 +1262,175 @@ namespace ajanda
                 switch (gun)
                 {
                     case "Monday":
-                        button1.Show();
-                        button2.Show();
-                        button3.Show();
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-
-                        button1.Text = 1.ToString();
-                        button2.Text = 2.ToString();
-                        button3.Text = 3.ToString();
-                        button4.Text = 4.ToString();
-                        button5.Text = 5.ToString();
-                        button6.Text = 6.ToString();
-                        button7.Text = 7.ToString();
-                        button8.Text = 8.ToString();
-                        button9.Text = 9.ToString();
-                        button10.Text = 10.ToString();
-                        button11.Text = 11.ToString();
-                        button12.Text = 12.ToString();
-                        button13.Text = 13.ToString();
-                        button14.Text = 14.ToString();
-                        button15.Text = 15.ToString();
-                        button16.Text = 16.ToString();
-                        button17.Text = 17.ToString();
-                        button18.Text = 18.ToString();
-                        button19.Text = 19.ToString();
-                        button20.Text = 20.ToString();
-                        button21.Text = 21.ToString();
-                        button22.Text = 22.ToString();
-                        button23.Text = 23.ToString();
-                        button24.Text = 24.ToString();
-                        button25.Text = 25.ToString();
-                        button26.Text = 26.ToString();
-                        button27.Text = 27.ToString();
-                        button28.Text = 28.ToString();
-                        button29.Text = 29.ToString();
-                        button30.Text = 30.ToString();
-                        button31.Text = 31.ToString();
-                        button32.Hide();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Pazartesi";
+                        for (int i = 0; i < 0; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 32; i++)
+                        {
+                            butons[i - 1].Show();
+                            butons[i - 1].Text = i.ToString();
+                        }
+                        for (int i = 31; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad = button01.Name.ToCharArray();
+                        char ad1 = ad[6];
+                        char ad2 = ad[7];
+                        int gun2 = Convert.ToInt32(butons[0].Text);
+                        label_goster2(gun2, ad1, ad2);
                         break;
 
                     case "Tuesday":
-                        button2.Show();
-                        button3.Show();
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-
-                        button1.Hide();
-                        button2.Text = 1.ToString();
-                        button3.Text = 2.ToString();
-                        button4.Text = 3.ToString();
-                        button5.Text = 4.ToString();
-                        button6.Text = 5.ToString();
-                        button7.Text = 6.ToString();
-                        button8.Text = 7.ToString();
-                        button9.Text = 8.ToString();
-                        button10.Text = 9.ToString();
-                        button11.Text = 10.ToString();
-                        button12.Text = 11.ToString();
-                        button13.Text = 12.ToString();
-                        button14.Text = 13.ToString();
-                        button15.Text = 14.ToString();
-                        button16.Text = 15.ToString();
-                        button17.Text = 16.ToString();
-                        button18.Text = 17.ToString();
-                        button19.Text = 18.ToString();
-                        button20.Text = 19.ToString();
-                        button21.Text = 20.ToString();
-                        button22.Text = 21.ToString();
-                        button23.Text = 22.ToString();
-                        button24.Text = 23.ToString();
-                        button25.Text = 24.ToString();
-                        button26.Text = 25.ToString();
-                        button27.Text = 26.ToString();
-                        button28.Text = 27.ToString();
-                        button29.Text = 28.ToString();
-                        button30.Text = 29.ToString();
-                        button31.Text = 30.ToString(); 
-                        button32.Text = 31.ToString();
-                        button33.Hide();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Salı";
+                        for (int i = 0; i < 2; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 32; i++)
+                        {
+                            butons[i].Show();
+                            butons[i].Text = i.ToString();
+                        }
+                        for (int i = 32; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad3 = button02.Name.ToCharArray();
+                        char ad4 = ad3[6];
+                        char ad5 = ad3[7];
+                        int gun3 = Convert.ToInt32(butons[1].Text);
+                        label_goster2(gun3, ad4, ad5);
                         break;
 
                     case "Wednesday":
-                        button3.Show();
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Text = 1.ToString();
-                        button4.Text = 2.ToString();
-                        button5.Text = 3.ToString();
-                        button6.Text = 4.ToString();
-                        button7.Text = 5.ToString();
-                        button8.Text = 6.ToString();
-                        button9.Text = 7.ToString();
-                        button10.Text = 8.ToString();
-                        button11.Text = 9.ToString();
-                        button12.Text = 10.ToString();
-                        button13.Text = 11.ToString();
-                        button14.Text = 12.ToString();
-                        button15.Text = 13.ToString();
-                        button16.Text = 14.ToString();
-                        button17.Text = 15.ToString();
-                        button18.Text = 16.ToString();
-                        button19.Text = 17.ToString();
-                        button20.Text = 18.ToString();
-                        button21.Text = 19.ToString();
-                        button22.Text = 20.ToString();
-                        button23.Text = 21.ToString();
-                        button24.Text = 22.ToString();
-                        button25.Text = 23.ToString();
-                        button26.Text = 24.ToString();
-                        button27.Text = 25.ToString();
-                        button28.Text = 26.ToString();
-                        button29.Text = 27.ToString();
-                        button30.Text = 28.ToString();
-                        button31.Text = 29.ToString();
-                        button32.Text = 30.ToString();
-                        button33.Text = 31.ToString();
-                        button34.Hide();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Çarşamba";
+                        for (int i = 0; i < 3; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 32; i++)
+                        {
+                            butons[i + 1].Show();
+                            butons[i + 1].Text = i.ToString();
+                        }
+                        for (int i = 33; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad6 = butons[2].Name.ToCharArray();
+                        char ad7 = ad6[6];
+                        char ad8 = ad6[7];
+                        int gun4 = Convert.ToInt32(butons[2].Text);
+                        label_goster2(gun4, ad7, ad8);
                         break;
 
                     case "Thursday":
-                        button4.Show();
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-                        button34.Show();
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Text = 1.ToString();
-                        button5.Text = 2.ToString();
-                        button6.Text = 3.ToString();
-                        button7.Text = 4.ToString();
-                        button8.Text = 5.ToString();
-                        button9.Text = 6.ToString();
-                        button10.Text = 7.ToString();
-                        button11.Text = 8.ToString();
-                        button12.Text = 9.ToString();
-                        button13.Text = 10.ToString();
-                        button14.Text = 11.ToString();
-                        button15.Text = 12.ToString();
-                        button16.Text = 13.ToString();
-                        button17.Text = 14.ToString();
-                        button18.Text = 15.ToString();
-                        button19.Text = 16.ToString();
-                        button20.Text = 17.ToString();
-                        button21.Text = 18.ToString();
-                        button22.Text = 19.ToString();
-                        button23.Text = 20.ToString();
-                        button24.Text = 21.ToString();
-                        button25.Text = 22.ToString();
-                        button26.Text = 23.ToString();
-                        button27.Text = 24.ToString();
-                        button28.Text = 25.ToString();
-                        button29.Text = 26.ToString();
-                        button30.Text = 27.ToString();
-                        button31.Text = 28.ToString();
-                        button32.Text = 29.ToString();
-                        button33.Text = 30.ToString();
-                        button34.Text = 31.ToString();
-                        button35.Hide();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Perşembe";
+                        for (int i = 0; i < 4; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 32; i++)
+                        {
+                            butons[i + 2].Show();
+                            butons[i + 2].Text = i.ToString();
+                        }
+                        for (int i = 34; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad9 = butons[3].Name.ToCharArray();
+                        char ad10 = ad9[6];
+                        char ad11 = ad9[7];
+                        int gun5 = Convert.ToInt32(butons[3].Text);
+                        label_goster2(gun5, ad10, ad11);
                         break;
 
                     case "Friday":
-                        button5.Show();
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-                        button34.Show();
-                        button35.Show();
-
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Hide();
-                        button5.Text = 1.ToString();
-                        button6.Text = 2.ToString();
-                        button7.Text = 3.ToString();
-                        button8.Text = 4.ToString();
-                        button9.Text = 5.ToString();
-                        button10.Text = 6.ToString();
-                        button11.Text = 7.ToString();
-                        button12.Text = 8.ToString();
-                        button13.Text = 9.ToString();
-                        button14.Text = 10.ToString();
-                        button15.Text = 11.ToString();
-                        button16.Text = 12.ToString();
-                        button17.Text = 13.ToString();
-                        button18.Text = 14.ToString();
-                        button19.Text = 15.ToString();
-                        button20.Text = 16.ToString();
-                        button21.Text = 17.ToString();
-                        button22.Text = 18.ToString();
-                        button23.Text = 19.ToString();
-                        button24.Text = 20.ToString();
-                        button25.Text = 21.ToString();
-                        button26.Text = 22.ToString();
-                        button27.Text = 23.ToString();
-                        button28.Text = 24.ToString();
-                        button29.Text = 25.ToString();
-                        button30.Text = 26.ToString();
-                        button31.Text = 27.ToString();
-                        button32.Text = 28.ToString();
-                        button33.Text = 29.ToString();
-                        button34.Text = 30.ToString();
-                        button35.Text = 31.ToString();
-                        button36.Hide();
-                        button37.Hide();
+                        label_gun.Text = "Cuma";
+                        for (int i = 0; i < 5; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 32; i++)
+                        {
+                            butons[i + 3].Show();
+                            butons[i + 3].Text = i.ToString();
+                        }
+                        for (int i = 35; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad12 = butons[4].Name.ToCharArray();
+                        char ad13 = ad12[6];
+                        char ad14 = ad12[7];
+                        int gun6 = Convert.ToInt32(butons[4].Text);
+                        label_goster2(gun6, ad13, ad14);
                         break;
 
                     case "Saturday":
-
-                        button6.Show();
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-                        button34.Show();
-                        button35.Show();
-                        button36.Show();
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Hide();
-                        button5.Hide();
-                        button6.Text = 1.ToString();
-                        button7.Text = 2.ToString();
-                        button8.Text = 3.ToString();
-                        button9.Text = 4.ToString();
-                        button10.Text = 5.ToString();
-                        button11.Text = 6.ToString();
-                        button12.Text = 7.ToString();
-                        button13.Text = 8.ToString();
-                        button14.Text = 9.ToString();
-                        button15.Text = 10.ToString();
-                        button16.Text = 11.ToString();
-                        button17.Text = 12.ToString();
-                        button18.Text = 13.ToString();
-                        button19.Text = 14.ToString();
-                        button20.Text = 15.ToString();
-                        button21.Text = 16.ToString();
-                        button22.Text = 17.ToString();
-                        button23.Text = 18.ToString();
-                        button24.Text = 19.ToString();
-                        button25.Text = 20.ToString();
-                        button26.Text = 21.ToString();
-                        button27.Text = 22.ToString();
-                        button28.Text = 23.ToString();
-                        button29.Text = 24.ToString();
-                        button30.Text = 25.ToString();
-                        button31.Text = 26.ToString();
-                        button32.Text = 27.ToString();
-                        button33.Text = 28.ToString();
-                        button34.Text = 29.ToString();
-                        button35.Text = 30.ToString();
-                        button36.Text = 31.ToString();
-                        button37.Hide();
+                        label_gun.Text = "Cumartesi";
+                        for (int i = 0; i < 6; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 32; i++)
+                        {
+                            butons[i + 4].Show();
+                            butons[i + 4].Text = i.ToString();
+                        }
+                        for (int i = 36; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad15 = butons[5].Name.ToCharArray();
+                        char ad16 = ad15[6];
+                        char ad17 = ad15[7];
+                        int gun7 = Convert.ToInt32(butons[5].Text);
+                        label_goster2(gun7, ad16, ad17);
                         break;
 
                     case "Sunday":
-                        button7.Show();
-                        button8.Show();
-                        button9.Show();
-                        button10.Show();
-                        button11.Show();
-                        button12.Show();
-                        button13.Show();
-                        button14.Show();
-                        button15.Show();
-                        button16.Show();
-                        button17.Show();
-                        button18.Show();
-                        button19.Show();
-                        button20.Show();
-                        button21.Show();
-                        button22.Show();
-                        button23.Show();
-                        button24.Show();
-                        button25.Show();
-                        button26.Show();
-                        button27.Show();
-                        button28.Show();
-                        button29.Show();
-                        button30.Show();
-                        button31.Show();
-                        button32.Show();
-                        button33.Show();
-                        button34.Show();
-                        button35.Show();
-                        button36.Show();
-                        button37.Show();
-
-                        button1.Hide();
-                        button2.Hide();
-                        button3.Hide();
-                        button4.Hide();
-                        button5.Hide();
-                        button6.Hide();
-                        button7.Text = 1.ToString();
-                        button8.Text = 2.ToString();
-                        button9.Text = 3.ToString();
-                        button10.Text = 4.ToString();
-                        button11.Text = 5.ToString();
-                        button12.Text = 6.ToString();
-                        button13.Text = 7.ToString();
-                        button14.Text = 8.ToString();
-                        button15.Text = 9.ToString();
-                        button16.Text = 10.ToString();
-                        button17.Text = 11.ToString();
-                        button18.Text = 12.ToString();
-                        button19.Text = 13.ToString();
-                        button20.Text = 14.ToString();
-                        button21.Text = 15.ToString();
-                        button22.Text = 16.ToString();
-                        button23.Text = 17.ToString();
-                        button24.Text = 18.ToString();
-                        button25.Text = 19.ToString();
-                        button26.Text = 20.ToString();
-                        button27.Text = 21.ToString();
-                        button28.Text = 22.ToString();
-                        button29.Text = 23.ToString();
-                        button30.Text = 24.ToString();
-                        button31.Text = 25.ToString();
-                        button32.Text = 26.ToString();
-                        button33.Text = 27.ToString();
-                        button34.Text = 28.ToString();
-                        button35.Text = 29.ToString();
-                        button36.Text = 30.ToString();
-                        button37.Text = 31.ToString();
+                        label_gun.Text = "Pazar";
+                        for (int i = 0; i < 7; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        for (int i = 1; i < 32; i++)
+                        {
+                            butons[i + 5].Show();
+                            butons[i + 5].Text = i.ToString();
+                        }
+                        for (int i = 37; i < 37; i++)
+                        {
+                            butons[i].Hide();
+                        }
+                        char[] ad18 = butons[6].Name.ToCharArray();
+                        char ad19 = ad18[6];
+                        char ad20 = ad18[7];
+                        int gun8 = Convert.ToInt32(butons[6].Text);
+                        label_goster2(gun8, ad19, ad20);
                         break;
                 }
             }
         }
 
+        // label hover
+        public void labels_hover(object sender,EventArgs e)
+        {
+            (sender as Label).ForeColor = Color.WhiteSmoke;
+        }
+
+        // label leave
+        public void labels_leave(object sender, EventArgs e)
+        {
+            (sender as Label).ForeColor = Color.Silver;
+        }
+
         // ekle formu
-        private void ekle_MouseHover(object sender, EventArgs e)
-        {
-            ekle.ForeColor = Color.WhiteSmoke;
-        }
-
-        private void ekle_MouseLeave(object sender, EventArgs e)
-        {
-            ekle.ForeColor = Color.Silver;
-        }
-
         private void ekle_Click(object sender, EventArgs e)
         {
             Ekle ekle_form = new Ekle();
@@ -2434,31 +1442,12 @@ namespace ajanda
         }
 
         // Ay ve yıl okları
-        private void label3_MouseLeave(object sender, EventArgs e)
-        {
-            label3.ForeColor = Color.DimGray;
-        }
-
-        private void label3_MouseHover(object sender, EventArgs e)
-        {
-            label3.ForeColor = Color.WhiteSmoke;
-        }
 
         private void label3_Click(object sender, EventArgs e)
         {
             int month=ay_cekme();
             int ay = month - 1;
-            ay_bulma(ay);            
-        }
-
-        private void label4_MouseHover(object sender, EventArgs e)
-        {
-            label4.ForeColor = Color.WhiteSmoke;
-        }
-
-        private void label4_MouseLeave(object sender, EventArgs e)
-        {
-            label4.ForeColor = Color.DimGray;
+            ay_bulma(ay);
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -2466,16 +1455,6 @@ namespace ajanda
             int month = ay_cekme();
             int ay = month + 1;
             ay_bulma(ay);            
-        }
-
-        private void label8_MouseHover(object sender, EventArgs e)
-        {
-            label8.ForeColor = Color.WhiteSmoke;
-        }
-
-        private void label8_MouseLeave(object sender, EventArgs e)
-        {
-            label8.ForeColor = Color.DimGray;
         }
 
         private void label8_Click(object sender, EventArgs e)
@@ -2499,20 +1478,10 @@ namespace ajanda
                 label8.ForeColor = Color.White;
             }
             label_yil.Text = yil.ToString();
-
-            tarihin_gununu_bul();
+            int gun = 1;
+            tarihin_gununu_bul(gun);
         }
-
-        private void label9_MouseHover(object sender, EventArgs e)
-        {
-            label9.ForeColor = Color.WhiteSmoke;
-        }
-
-        private void label9_MouseLeave(object sender, EventArgs e)
-        {
-            label9.ForeColor = Color.DimGray;
-        }
-        
+       
         private void label9_Click(object sender, EventArgs e)
         {
             int yil = Convert.ToInt32(label_yil.Text);
@@ -2525,20 +1494,11 @@ namespace ajanda
                 label8.ForeColor = Color.DimGray;
             }
             label_yil.Text = yil.ToString();
-
-            tarihin_gununu_bul();
+            int gun = 1;
+            tarihin_gununu_bul(gun);
         }
 
         // ay ve yıl formları
-        private void label_ay_MouseHover(object sender, EventArgs e)
-        {
-            label_ay.ForeColor = Color.WhiteSmoke;
-        }
-
-        private void label_ay_MouseLeave(object sender, EventArgs e)
-        {
-            label_ay.ForeColor = Color.Silver;
-        }
 
         private void label_ay_Click(object sender, EventArgs e)
         {
@@ -2551,16 +1511,6 @@ namespace ajanda
             }
         }
 
-        private void label_yil_MouseHover(object sender, EventArgs e)
-        {
-            label_yil.ForeColor = Color.WhiteSmoke;
-        }
-
-        private void label_yil_MouseLeave(object sender, EventArgs e)
-        {
-            label_yil.ForeColor = Color.Silver;
-        }
-
         private void label_yil_Click(object sender, EventArgs e)
         {
             Yillar yil_form = new Yillar();
@@ -2570,420 +1520,6 @@ namespace ajanda
                 yil_form.Show();
 
             }
-        }
-
-        // butonların flat ayarları
-        private void button1_MouseHover(object sender, EventArgs e)
-        {
-            button1.FlatAppearance.BorderColor = Color.Silver;
-            button1.FlatAppearance.BorderSize = 1;
-        }
-        private void button1_MouseLeave(object sender, EventArgs e)
-        {
-            button1.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button2_MouseHover(object sender, EventArgs e)
-        {
-            button2.FlatAppearance.BorderColor = Color.Silver;
-            button2.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button2_MouseLeave(object sender, EventArgs e)
-        {
-            button2.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button3_MouseHover(object sender, EventArgs e)
-        {
-            button3.FlatAppearance.BorderColor = Color.Silver;
-            button3.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button3_MouseLeave(object sender, EventArgs e)
-        {
-            button3.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button4_MouseHover(object sender, EventArgs e)
-        {
-            button4.FlatAppearance.BorderColor = Color.Silver;
-            button4.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button4_MouseLeave(object sender, EventArgs e)
-        {
-            button4.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button5_MouseHover(object sender, EventArgs e)
-        {
-            button5.FlatAppearance.BorderColor = Color.Silver;
-            button5.FlatAppearance.BorderSize = 1;
-
-        }
-
-        private void button5_MouseLeave(object sender, EventArgs e)
-        {
-            button5.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button6_MouseHover(object sender, EventArgs e)
-        {
-            button6.FlatAppearance.BorderColor = Color.Silver;
-            button6.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button6_MouseLeave(object sender, EventArgs e)
-        {
-            button6.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button7_MouseHover(object sender, EventArgs e)
-        {
-            button7.FlatAppearance.BorderColor = Color.Silver;
-            button7.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button7_MouseLeave(object sender, EventArgs e)
-        {
-            button7.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button8_MouseHover(object sender, EventArgs e)
-        {
-            button8.FlatAppearance.BorderColor = Color.Silver;
-            button8.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button8_MouseLeave(object sender, EventArgs e)
-        {
-            button8.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button9_MouseHover(object sender, EventArgs e)
-        {
-            button9.FlatAppearance.BorderColor = Color.Silver;
-            button9.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button9_MouseLeave(object sender, EventArgs e)
-        {
-            button9.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button10_MouseHover(object sender, EventArgs e)
-        {
-            button10.FlatAppearance.BorderColor = Color.Silver;
-            button10.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button10_MouseLeave(object sender, EventArgs e)
-        {
-            button10.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button11_MouseHover(object sender, EventArgs e)
-        {
-            button11.FlatAppearance.BorderColor = Color.Silver;
-            button11.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button11_MouseLeave(object sender, EventArgs e)
-        {
-            button11.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button12_MouseHover(object sender, EventArgs e)
-        {
-            button12.FlatAppearance.BorderColor = Color.Silver;
-            button12.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button12_MouseLeave(object sender, EventArgs e)
-        {
-            button12.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button13_MouseHover(object sender, EventArgs e)
-        {
-            button13.FlatAppearance.BorderColor = Color.Silver;
-            button13.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button13_MouseLeave(object sender, EventArgs e)
-        {
-            button13.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button14_MouseHover(object sender, EventArgs e)
-        {
-            button14.FlatAppearance.BorderColor = Color.Silver;
-            button14.FlatAppearance.BorderSize = 1;
-        }
-        private void button14_MouseLeave_1(object sender, EventArgs e)
-        {
-            button14.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button15_MouseHover(object sender, EventArgs e)
-        {
-            button15.FlatAppearance.BorderColor = Color.Silver;
-            button15.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button15_MouseLeave(object sender, EventArgs e)
-        {
-            button15.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button16_MouseHover(object sender, EventArgs e)
-        {
-            button16.FlatAppearance.BorderColor = Color.Silver;
-            button16.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button16_MouseLeave(object sender, EventArgs e)
-        {
-            button16.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button17_MouseHover(object sender, EventArgs e)
-        {
-            button17.FlatAppearance.BorderColor = Color.Silver;
-            button17.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button17_MouseLeave(object sender, EventArgs e)
-        {
-            button17.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button18_MouseHover(object sender, EventArgs e)
-        {
-            button18.FlatAppearance.BorderColor = Color.Silver;
-            button18.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button18_MouseLeave(object sender, EventArgs e)
-        {
-            button18.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button19_MouseHover(object sender, EventArgs e)
-        {
-            button19.FlatAppearance.BorderColor = Color.Silver;
-            button19.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button19_MouseLeave(object sender, EventArgs e)
-        {
-            button19.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button20_MouseHover(object sender, EventArgs e)
-        {
-            button20.FlatAppearance.BorderColor = Color.Silver;
-            button20.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button20_MouseLeave(object sender, EventArgs e)
-        {
-            button20.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button21_MouseHover(object sender, EventArgs e)
-        {
-            button21.FlatAppearance.BorderColor = Color.Silver;
-            button21.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button21_MouseLeave(object sender, EventArgs e)
-        {
-            button21.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button22_MouseHover(object sender, EventArgs e)
-        {
-            button22.FlatAppearance.BorderColor = Color.Silver;
-            button22.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button22_MouseLeave(object sender, EventArgs e)
-        {
-            button22.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button23_MouseHover(object sender, EventArgs e)
-        {
-            button23.FlatAppearance.BorderColor = Color.Silver;
-            button23.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button23_MouseLeave(object sender, EventArgs e)
-        {
-            button23.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button24_MouseHover(object sender, EventArgs e)
-        {
-            button24.FlatAppearance.BorderColor = Color.Silver;
-            button24.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button24_MouseLeave(object sender, EventArgs e)
-        {
-            button24.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button25_MouseHover(object sender, EventArgs e)
-        {
-            button25.FlatAppearance.BorderColor = Color.Silver;
-            button25.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button25_MouseLeave(object sender, EventArgs e)
-        {
-            button25.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button26_MouseHover(object sender, EventArgs e)
-        {
-            button26.FlatAppearance.BorderColor = Color.Silver;
-            button26.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button26_MouseLeave(object sender, EventArgs e)
-        {
-            button26.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button27_MouseHover(object sender, EventArgs e)
-        {
-            button27.FlatAppearance.BorderColor = Color.Silver;
-            button27.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button27_MouseLeave(object sender, EventArgs e)
-        {
-            button27.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button28_MouseHover(object sender, EventArgs e)
-        {
-            button28.FlatAppearance.BorderColor = Color.Silver;
-            button28.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button28_MouseLeave(object sender, EventArgs e)
-        {
-            button28.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button29_MouseHover(object sender, EventArgs e)
-        {
-            button29.FlatAppearance.BorderColor = Color.Silver;
-            button29.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button29_MouseLeave(object sender, EventArgs e)
-        {
-            button29.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button30_MouseHover(object sender, EventArgs e)
-        {
-            button30.FlatAppearance.BorderColor = Color.Silver;
-            button30.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button30_MouseLeave(object sender, EventArgs e)
-        {
-            button30.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button31_MouseHover(object sender, EventArgs e)
-        {
-            button31.FlatAppearance.BorderColor = Color.Silver;
-            button31.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button31_MouseLeave(object sender, EventArgs e)
-        {
-            button31.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button32_MouseHover(object sender, EventArgs e)
-        {
-            button32.FlatAppearance.BorderColor = Color.Silver;
-            button32.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button32_MouseLeave(object sender, EventArgs e)
-        {
-            button32.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button33_MouseHover(object sender, EventArgs e)
-        {
-            button33.FlatAppearance.BorderColor = Color.Silver;
-            button33.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button33_MouseLeave(object sender, EventArgs e)
-        {
-            button33.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button34_MouseHover(object sender, EventArgs e)
-        {
-            button34.FlatAppearance.BorderColor = Color.Silver;
-            button34.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button34_MouseLeave(object sender, EventArgs e)
-        {
-            button34.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button35_MouseHover(object sender, EventArgs e)
-        {
-            button35.FlatAppearance.BorderColor = Color.Silver;
-            button35.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button35_MouseLeave(object sender, EventArgs e)
-        {
-            button35.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button36_MouseHover(object sender, EventArgs e)
-        {
-            button36.FlatAppearance.BorderColor = Color.Silver;
-            button36.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button36_MouseLeave(object sender, EventArgs e)
-        {
-            button36.FlatAppearance.BorderSize = 0;
-        }
-
-        private void button37_MouseHover(object sender, EventArgs e)
-        {
-            button37.FlatAppearance.BorderColor = Color.Silver;
-            button37.FlatAppearance.BorderSize = 1;
-        }
-
-        private void button37_MouseLeave(object sender, EventArgs e)
-        {
-            button37.FlatAppearance.BorderSize = 0;
-        }
-
-        // gün butonları liste açma
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int gun = Convert.ToInt32(button1.Text);
-            anasayfa_list(gun);
         }
     }
 }

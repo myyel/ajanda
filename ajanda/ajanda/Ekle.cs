@@ -118,27 +118,40 @@ namespace ajanda
             int hedef_id = Convert.ToInt32(hedef_id2);
             int mod = cs % cgs;
             int calisma_sayisi = cs - mod;
-            
+            int z = calisma_sayisi / cgs;
+
             DateTime gun = dateTimePicker1.Value;
             for (int y = cgs; y > 0; y--)
             {
-                int z = calisma_sayisi / cgs;
-                for (int x = z; x>0; x--)
+                string[] day = gun.ToString().Split();
+                string ekle_sorgu = "insert into planlar(gun,hedef_id,sayi) values('" + day[0] + "','" + hedef_id + "','"+z+"')";
+                SqlCommand plan_ekle = new SqlCommand(ekle_sorgu, baglanti);
+                plan_ekle.ExecuteNonQuery();
+                gun = gun.AddDays(1);
+            }
+            if (calisma_sayisi < 1)
+            {
+                for (int i = 0; i < mod; i++)
+                {
+                    z++;
+                    string[] day = gun.ToString().Split();
+                    string ekle_sorgu2 = "insert into planlar(gun,hedef_id,sayi) values('" + day[0] + "','" + hedef_id + "','" + z + "')";
+                    SqlCommand plan_ekle2 = new SqlCommand(ekle_sorgu2, baglanti);
+                    plan_ekle2.ExecuteNonQuery();
+                    gun = gun.AddDays(1);
+                    z--;
+                }
+            }
+            else if (calisma_sayisi>0 && mod != 0)
+            {
+                for (int i = 0; i < mod; i++)
                 {
                     string[] day = gun.ToString().Split();
-                    string ekle_sorgu = "insert into planlar(gun,hedef_id) values('" + day[0] + "','" + hedef_id + "')";
-                    SqlCommand plan_ekle = new SqlCommand(ekle_sorgu, baglanti);
-                    plan_ekle.ExecuteNonQuery();
-
-                    if (mod != 0)
-                    {
-                        mod--;
-                        string ekle_sorgu2 = "insert into planlar(gun,hedef_id) values('" + day[0] + "','" + hedef_id + "')";
-                        SqlCommand plan_ekle2 = new SqlCommand(ekle_sorgu2, baglanti);
-                        plan_ekle2.ExecuteNonQuery();                        
-                    }
+                    string ekle_sorgu2 = "insert into planlar(gun,hedef_id,sayi) values('" + day[0] + "','" + hedef_id + "','" + mod + "')";
+                    SqlCommand plan_ekle2 = new SqlCommand(ekle_sorgu2, baglanti);
+                    plan_ekle2.ExecuteNonQuery();
+                    gun = gun.AddDays(1);
                 }
-                gun = gun.AddDays(1);
             }
             baglanti.Close();
         }
