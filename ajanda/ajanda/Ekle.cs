@@ -14,6 +14,9 @@ namespace ajanda
     public partial class Ekle : Form
     {
         SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-RCGP0F0\\SQLEXPRESS;Initial Catalog=db_plan;Integrated Security=True");
+        SqlConnection baglanti2 = new SqlConnection("Data Source=DESKTOP-RCGP0F0\\SQLEXPRESS;Initial Catalog=db_plan;Integrated Security=True");
+
+
 
         public Ekle()
         {
@@ -31,6 +34,12 @@ namespace ajanda
             string uyari = "Lütfen tüm alanları doldurunuz";
             MessageBox.Show(uyari, baslik);
         }
+
+        public void mesaj2()
+        {
+            MessageBox.Show("Lütfen 'Çalışma sayısı' ve 'Çalışma gün sayısı' kısmına bir sayı giriniz","HATA");
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             dateTimePicker1.Value = DateTime.Now;
@@ -92,7 +101,7 @@ namespace ajanda
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Lütfen 'Çalışma sayısı' ve 'Çalışma gün sayısı' kısmına bir sayı giriniz");
+                    mesaj2();
 
                 }
                 dateTimePicker1.Value = DateTime.Now;
@@ -111,49 +120,71 @@ namespace ajanda
         // planlar tablosuna hedefleri ekle
         public void planla(DateTime baslangic_tarihi, string hedef, int cs, int cgs)
         {
-            string sorgu = " select hedef_id from hedefler where hedef='" + hedef + "'";
-            SqlCommand hedef_id_al = new SqlCommand(sorgu, baglanti);
-            baglanti.Open();
-            string hedef_id2 = hedef_id_al.ExecuteScalar().ToString();
-            int hedef_id = Convert.ToInt32(hedef_id2);
-            int mod = cs % cgs;
-            int calisma_sayisi = cs - mod;
-            int z = calisma_sayisi / cgs;
-
-            DateTime gun = dateTimePicker1.Value;
-            for (int y = cgs; y > 0; y--)
+            try
             {
-                string[] day = gun.ToString().Split();
-                string ekle_sorgu = "insert into planlar(gun,hedef_id,sayi) values('" + day[0] + "','" + hedef_id + "','"+z+"')";
-                SqlCommand plan_ekle = new SqlCommand(ekle_sorgu, baglanti);
-                plan_ekle.ExecuteNonQuery();
-                gun = gun.AddDays(1);
-            }
-            if (calisma_sayisi < 1)
-            {
-                for (int i = 0; i < mod; i++)
+                string sorgu = " select hedef_id from hedefler where hedef='" + hedef + "'";
+                SqlCommand hedef_id_al = new SqlCommand(sorgu, baglanti);
+                baglanti.Open();
+                string hedef_id2 = hedef_id_al.ExecuteScalar().ToString();
+                baglanti.Close();
+                int hedef_id = Convert.ToInt32(hedef_id2);
+                int mod = cs % cgs;
+                int bolunebilir_calisma_sayisi = cs - mod;
+                int gunluk_calisma_sayisi = bolunebilir_calisma_sayisi / cgs;
+                if (gunluk_calisma_sayisi < 1)
                 {
-                    z++;
-                    string[] day = gun.ToString().Split();
-                    string ekle_sorgu2 = "insert into planlar(gun,hedef_id,sayi) values('" + day[0] + "','" + hedef_id + "','" + z + "')";
-                    SqlCommand plan_ekle2 = new SqlCommand(ekle_sorgu2, baglanti);
-                    plan_ekle2.ExecuteNonQuery();
-                    gun = gun.AddDays(1);
-                    z--;
+                    gunluk_calisma_sayisi += 1;
+                    for (int i = mod; i > 0; i--)
+                    {
+                        string[] day = baslangic_tarihi.ToString().Split();
+                        string ekle_sorgu = "insert into planlar(gun,hedef_id,sayi) values('" + day[0] + "','" + hedef_id + "','" + gunluk_calisma_sayisi + "')";
+                        SqlCommand ekle_plan = new SqlCommand(ekle_sorgu, baglanti2);
+                        baglanti2.Open();
+                        ekle_plan.ExecuteNonQuery();
+                        baglanti2.Close();
+                        baslangic_tarihi = baslangic_tarihi.AddDays(1);
+                    }
+                }
+                else
+                {
+                    if (mod==0)
+                    {
+                        for (int i = cgs; i > 0; i--)
+                        {
+                            string[] day = baslangic_tarihi.ToString().Split();
+                            string ekle_sorgu = "insert into planlar(gun,hedef_id,sayi) values('" + day[0] + "','" + hedef_id + "','" + gunluk_calisma_sayisi + "')";
+                            SqlCommand ekle_plan = new SqlCommand(ekle_sorgu, baglanti2);
+                            baglanti2.Open();
+                            ekle_plan.ExecuteNonQuery();
+                            baglanti2.Close();
+                            baslangic_tarihi = baslangic_tarihi.AddDays(1);
+                        }
+                    }
+                    else
+                    {
+                        for (int i = cgs; i > 0; i--)
+                        {
+                            if (mod!=0)
+                            {
+                                gunluk_calisma_sayisi += 1;
+                            }
+                            string[] day = baslangic_tarihi.ToString().Split();
+                            string ekle_sorgu = "insert into planlar(gun,hedef_id,sayi) values('" + day[0] + "','" + hedef_id + "','" + gunluk_calisma_sayisi + "')";
+                            SqlCommand ekle_plan = new SqlCommand(ekle_sorgu, baglanti2);
+                            baglanti2.Open();
+                            ekle_plan.ExecuteNonQuery();
+                            baglanti2.Close();
+                            gunluk_calisma_sayisi -=1;
+                            mod--;
+                            baslangic_tarihi = baslangic_tarihi.AddDays(1);
+                        }
+                    }
                 }
             }
-            else if (calisma_sayisi>0 && mod != 0)
+            catch (Exception e)
             {
-                for (int i = 0; i < mod; i++)
-                {
-                    string[] day = gun.ToString().Split();
-                    string ekle_sorgu2 = "insert into planlar(gun,hedef_id,sayi) values('" + day[0] + "','" + hedef_id + "','" + mod + "')";
-                    SqlCommand plan_ekle2 = new SqlCommand(ekle_sorgu2, baglanti);
-                    plan_ekle2.ExecuteNonQuery();
-                    gun = gun.AddDays(1);
-                }
-            }
-            baglanti.Close();
-        }
+                MessageBox.Show(e.ToString());
+            }            
+        }                
     }
 }

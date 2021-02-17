@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,11 +64,23 @@
     <Compile Include="Anasayfa.Designer.cs">
       <DependentUpon>Anasayfa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Duzenle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Duzenle.Designer.cs">
+      <DependentUpon>Duzenle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ekle.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ekle.Designer.cs">
       <DependentUpon>Ekle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="plan_liste_formu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="plan_liste_formu.Designer.cs">
+      <DependentUpon>plan_liste_formu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,8 +96,14 @@
     <EmbeddedResource Include="Aylar.resx">
       <DependentUpon>Aylar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Duzenle.resx">
+      <DependentUpon>Duzenle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ekle.resx">
       <DependentUpon>Ekle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="plan_liste_formu.resx">
+      <DependentUpon>plan_liste_formu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -164,6 +183,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\home_background2_acik.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plan_background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

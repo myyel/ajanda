@@ -56,14 +56,6 @@ namespace ajanda
             
         }
 
-        // anasayfa büyümesi, gösterilecek gün label ve yapılacaklar listesi
-        public void anasayfa_list()
-        {
-                ekle.Location = new Point(1142, 680);
-                this.Size = new Size(1250, 818);
-
-        }
-
         //buton click olayında
         public void butons_clicked(object sender, EventArgs e)
         {
@@ -72,22 +64,18 @@ namespace ajanda
             char ad2 = ad[7];
             int gun = Convert.ToInt32((sender as Button).Text);
             string day = (sender as Button).Text;
-            label_goster3(gun, ad1, ad2);
-            plan_listele(day);
+            
+            label_goster3(gun, ad1, ad2);            
             butons_tabs(gun);
-            anasayfa_list();
+            plan_listele(day);
         }
 
 
         // plan listesini anasayfaya aktarma
         public void plan_listele(string day)
         {
-            int s = 0;
-            while (s<10)
-            {
-                checks_sil();
-                s++;
-            }
+            Plan_liste_formu plan_form = new Plan_liste_formu();            
+            plan_form.Show();
             string ay = label_ay.Text;
             string month = "";
             switch (ay)
@@ -131,120 +119,9 @@ namespace ajanda
             }
             string year = label_yil.Text;
             string gun = label_gun.Text;
-            label_time.Text = day + " " + ay + " " + year + "   " + gun;
+            plan_form.label_time.Text = day + " " + ay + " " + year + "   " + gun;
             string tarih = day + "." + month + "." + year;
-            try
-            {
-                int i = 0;
-                string sorgu = "select hedef_id from planlar where gun= '" + tarih + "'";
-                SqlCommand hedef_id_sorgu = new SqlCommand(sorgu, baglanti);
-                baglanti.Open();
-                IDataReader his = hedef_id_sorgu.ExecuteReader();
-                while (his.Read())
-                {
-                    string hedef_ids = his[0].ToString();
-                    string sorgu2 = "select hedef from hedefler where hedef_id='" + hedef_ids + "'";
-                    SqlCommand hedef_sorgu = new SqlCommand(sorgu2,baglanti2);
-                    baglanti2.Open();
-                    string hedefs = hedef_sorgu.ExecuteScalar().ToString();
-                    baglanti2.Close();
-                    if (hedef_ids!=null)
-                    {
-
-                        string sorgu3 = "select calisma_sekli from hedefler where hedef_id='" + hedef_ids + "'";
-                        SqlCommand calisma_sekli_sorgu = new SqlCommand(sorgu3, baglanti3);
-                        baglanti3.Open();
-                        string calisma_seklis = calisma_sekli_sorgu.ExecuteScalar().ToString();
-                        baglanti3.Close();
-                        string sorgu4 = "select sayi from planlar where gun='" + tarih + "' and hedef_id='" + hedef_ids + "'";
-                        SqlCommand sayi_sorgu = new SqlCommand(sorgu4, baglanti4);
-                        baglanti4.Open();
-                        string sayis = sayi_sorgu.ExecuteScalar().ToString();
-                        baglanti4.Close();
-                        string name = hedefs + " (" + sayis + " " + calisma_seklis + ")";
-                        CheckBox checks = new CheckBox();
-                        checks.Text = name;
-                        checks.BackColor = Color.Transparent;
-                        checks.ForeColor = Color.Black;
-                        checks.Font = new Font("Arial Rounded MT Bold", 14);
-                        checks.Location = new Point(836, 121 + i);
-                        checks.TabStop = false;
-                        checks.Size = new Size(359, 24);
-                        checks.TextAlign = ContentAlignment.MiddleLeft;
-                        this.Controls.Add(checks);
-                        i += 30;
-                        checks.CheckedChanged += new EventHandler(checks_checked);
-                        checks.Click += new EventHandler(plan_sil);
-                    }                    
-                }
-                baglanti.Close();
-
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString());
-                baglanti.Close();
-            }
-        }
-
-        public void checks_checked(object sender, EventArgs e)
-        {
-            if ((sender as CheckBox).Checked==true)
-            {
-                (sender as CheckBox).ForeColor = Color.DarkBlue;
-            }
-            else
-            {
-                (sender as CheckBox).ForeColor = Color.Black;
-            }
-        }
-
-        public void checks_sil()
-        {
-            foreach (Control item in this.Controls)
-            {
-                if(item is CheckBox)
-                {
-                    this.Controls.Remove(item);
-                }
-            }
-        }
-
-        public void plan_sil(object sender, EventArgs e)
-        {
-            DialogResult secenek = MessageBox.Show("Planı Silmek İstiyor musunuz?", "Bilgilendirme Penceresi", 
-                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
-
-            if (secenek == DialogResult.Yes)
-            {
-                string[] hedef = (sender as CheckBox).Text.Split();
-                string sorgu="select hedef_id from hedefler where hedef='"+hedef[0]+"'";
-                SqlCommand hedef_sorgu = new SqlCommand(sorgu, baglanti2);
-                baglanti2.Open();
-                string hedef_id = hedef_sorgu.ExecuteScalar().ToString();
-                baglanti2.Close();
-                string sorgu2 = "delete from hedefler where hedef_id='" + hedef_id + "'";
-                SqlCommand hedef_id_sorgu = new SqlCommand(sorgu2, baglanti3);
-                baglanti3.Open();
-                hedef_id_sorgu.ExecuteNonQuery();
-                baglanti3.Close();
-                string sorgu3 = "delete from planlar where hedef_id='" + hedef_id + "'";
-                SqlCommand hedef_id_sorgu2 = new SqlCommand(sorgu3, baglanti3);
-                baglanti3.Open();
-                hedef_id_sorgu2.ExecuteNonQuery();
-                baglanti3.Close();
-                string[] day = label_time.Text.Split();
-                plan_listele(day[0]);
-                
-            }
-            else if (secenek == DialogResult.No)
-            {
-                //Hayır seçeneğine tıklandığında çalıştırılacak kodlar
-            }
-            else if (secenek == DialogResult.Cancel)
-            {
-
-            }
+            plan_form.plan_liste(tarih);
         }
 
         //buton hover olayında
