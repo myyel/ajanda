@@ -120,7 +120,6 @@ namespace ajanda
             this.lab36 = new System.Windows.Forms.Label();
             this.lab37 = new System.Windows.Forms.Label();
             this.label_time = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button01
@@ -1514,16 +1513,6 @@ namespace ajanda
             this.label_time.MouseLeave += new System.EventHandler(this.labels_leave);
             this.label_time.MouseHover += new System.EventHandler(this.labels_hover);
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(902, 165);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 201;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // Anasayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1532,7 +1521,6 @@ namespace ajanda
             this.BackgroundImage = global::ajanda.Properties.Resources.home_background2_acik;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1230, 775);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.lab35);
             this.Controls.Add(this.lab32);
             this.Controls.Add(this.lab28);
@@ -1730,7 +1718,6 @@ namespace ajanda
         public System.Windows.Forms.Label lab36;
         public System.Windows.Forms.Label lab37;
         public System.Windows.Forms.Label label_time;
-        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

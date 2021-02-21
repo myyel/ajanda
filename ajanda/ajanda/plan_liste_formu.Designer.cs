@@ -30,6 +30,8 @@ namespace ajanda
         private void InitializeComponent()
         {
             this.label_time = new System.Windows.Forms.Label();
+            this.label_deger = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // label_time
@@ -43,6 +45,26 @@ namespace ajanda
             this.label_time.TabIndex = 0;
             this.label_time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label_deger
+            // 
+            this.label_deger.AutoSize = true;
+            this.label_deger.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_deger.Location = new System.Drawing.Point(3, 583);
+            this.label_deger.Name = "label_deger";
+            this.label_deger.Size = new System.Drawing.Size(141, 46);
+            this.label_deger.TabIndex = 1;
+            this.label_deger.Text = "100,00";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(145, 593);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(272, 31);
+            this.progressBar1.Step = 1;
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 2;
+            this.progressBar1.Value = 70;
+            // 
             // Plan_liste_formu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -51,6 +73,8 @@ namespace ajanda
             this.BackgroundImage = global::ajanda.Properties.Resources.plan_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(434, 661);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.label_deger);
             this.Controls.Add(this.label_time);
             this.ForeColor = System.Drawing.Color.Silver;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -62,11 +86,14 @@ namespace ajanda
             this.TopMost = true;
             this.Load += new System.EventHandler(this.plan_liste_formu_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
 
         #endregion
         public System.Windows.Forms.Label label_time;
+        private System.Windows.Forms.Label label_deger;
+        public System.Windows.Forms.ProgressBar progressBar1;
     }
 }

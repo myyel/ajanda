@@ -15,7 +15,11 @@ namespace ajanda
     {
         SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-RCGP0F0\\SQLEXPRESS;Initial Catalog=db_plan;Integrated Security=True");
         SqlConnection baglanti2 = new SqlConnection("Data Source=DESKTOP-RCGP0F0\\SQLEXPRESS;Initial Catalog=db_plan;Integrated Security=True");
-        
+        SqlConnection baglanti3 = new SqlConnection("Data Source=DESKTOP-RCGP0F0\\SQLEXPRESS;Initial Catalog=db_plan;Integrated Security=True");
+        SqlConnection baglanti4 = new SqlConnection("Data Source=DESKTOP-RCGP0F0\\SQLEXPRESS;Initial Catalog=db_plan;Integrated Security=True");
+
+
+
         public Duzenle()
         {
             InitializeComponent();
@@ -117,6 +121,19 @@ namespace ajanda
                 {
                     int cs = Convert.ToInt32(textBox2.Text);
                     int cgs = Convert.ToInt32(textBox3.Text);
+
+                    string sorgu1 = "select baslangic_tarihi from hedefler where hedef_id='" + hedef_id + "'";
+                    SqlCommand bas_tarih_al = new SqlCommand(sorgu1, baglanti2);
+                    baglanti2.Open();
+                    string[] bas_tarih = bas_tarih_al.ExecuteScalar().ToString().Split('.');
+                    baglanti2.Close();
+
+                    string sorgu3 = "select bitis_tarihi from hedefler where hedef_id='" + hedef_id + "'";
+                    SqlCommand bit_tarih_al = new SqlCommand(sorgu3, baglanti3);
+                    baglanti3.Open();
+                    string[] bit_tarih = bit_tarih_al.ExecuteScalar().ToString().Split('.');
+                    baglanti3.Close();
+
                     SqlCommand guncelle = new SqlCommand(sorgu, baglanti);
                     baglanti.Open();
                     guncelle.ExecuteNonQuery();
@@ -126,16 +143,18 @@ namespace ajanda
                     baglanti2.Open();
                     sil.ExecuteNonQuery();
                     baglanti2.Close();
+
+                    duzen_gun_degerlendirme(bas_tarih, bit_tarih);
                     DateTime bt = dateTimePicker1.Value;
                     Ekle ekle_form = new Ekle();
                     ekle_form.planla(bt,hedef, cs, cgs);
+                    MessageBox.Show("Hedef güncellendi");
                 }
                 catch (Exception w)
                 {
                     MessageBox.Show(w.ToString());
 
                 }
-                MessageBox.Show("Hedef güncellendi");
                 this.Close();
             }           
         }
@@ -157,6 +176,59 @@ namespace ajanda
             TimeSpan sonuc = y - x;
             decimal z = Convert.ToDecimal(sonuc.TotalDays);
             textBox3.Text = Math.Floor(z).ToString();
+        }
+
+        public void duzen_gun_degerlendirme(string[] bas_tarih, string[] bit_tarih)
+        {
+            int bas_yil = Convert.ToInt32(bas_tarih[2]);
+            int bit_yil = Convert.ToInt32(bit_tarih[2]);
+            int bas_ay = Convert.ToInt32(bas_tarih[1]);
+            int bit_ay = Convert.ToInt32(bit_tarih[1]);
+            int bas_gun = Convert.ToInt32(bas_tarih[0]);
+            int bit_gun = Convert.ToInt32(bit_tarih[0]);
+
+            DateTime baslangic_tarihi = new DateTime(bas_yil, bas_ay, bas_gun);
+            DateTime bitis_tarihi = new DateTime(bit_yil, bit_ay, bit_gun);
+
+            while (baslangic_tarihi < bitis_tarihi)
+            {
+
+                string[] gun = baslangic_tarihi.ToString().Split();
+                try
+                {
+                    string sorgu3 = "select sum(sayi) from planlar where gun='" + gun[0] + "'";
+                    SqlCommand sayi_al = new SqlCommand(sorgu3, baglanti4);
+                    baglanti4.Open();
+                    decimal sayi_toplam = Convert.ToDecimal(sayi_al.ExecuteScalar().ToString());
+                    baglanti4.Close();
+
+                    string sorgu4 = "select sum(sayi*deger) from planlar where gun='" + gun[0] + "'";
+                    SqlCommand deger_al = new SqlCommand(sorgu4, baglanti2);
+                    baglanti2.Open();
+                    decimal deger_toplam = Convert.ToDecimal(deger_al.ExecuteScalar().ToString());
+                    baglanti2.Close();
+
+                    decimal gun_degerlendirmes = (deger_toplam / sayi_toplam) * 100;
+
+                    string sorgu5 = "update degerlendirmeler set gun_degerlendirme='" + gun_degerlendirmes.ToString().Replace(',', '.') + "' where tarih='" + gun[0] + "'";
+                    SqlCommand guncelle = new SqlCommand(sorgu5, baglanti3);
+                    baglanti3.Open();
+                    guncelle.ExecuteNonQuery();
+                    baglanti3.Close();
+                }
+                catch (Exception)
+                {
+                    decimal gun_degerlendirmes = 0;
+
+                    string sorgu5 = "update degerlendirmeler set gun_degerlendirme='" + gun_degerlendirmes.ToString().Replace(',', '.') + "' where tarih='" + gun[0] + "'";
+                    SqlCommand guncelle = new SqlCommand(sorgu5, baglanti3);
+                    baglanti3.Open();
+                    guncelle.ExecuteNonQuery();
+                    baglanti3.Close();
+                }
+
+                baslangic_tarihi = baslangic_tarihi.AddDays(1);
+            }
         }
     }
 }

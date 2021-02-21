@@ -76,11 +76,11 @@
     <Compile Include="Ekle.Designer.cs">
       <DependentUpon>Ekle.cs</DependentUpon>
     </Compile>
-    <Compile Include="plan_liste_formu.cs">
+    <Compile Include="Plan_liste_formu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="plan_liste_formu.Designer.cs">
-      <DependentUpon>plan_liste_formu.cs</DependentUpon>
+    <Compile Include="Plan_liste_formu.Designer.cs">
+      <DependentUpon>Plan_liste_formu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,8 +102,8 @@
     <EmbeddedResource Include="Ekle.resx">
       <DependentUpon>Ekle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="plan_liste_formu.resx">
-      <DependentUpon>plan_liste_formu.cs</DependentUpon>
+    <EmbeddedResource Include="Plan_liste_formu.resx">
+      <DependentUpon>Plan_liste_formu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

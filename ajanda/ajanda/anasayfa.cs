@@ -64,18 +64,16 @@ namespace ajanda
             char ad2 = ad[7];
             int gun = Convert.ToInt32((sender as Button).Text);
             string day = (sender as Button).Text;
-            
+
             label_goster3(gun, ad1, ad2);            
             butons_tabs(gun);
             plan_listele(day);
         }
 
 
-        // plan listesini anasayfaya aktarma
+        // plan listesini forma aktarma
         public void plan_listele(string day)
         {
-            Plan_liste_formu plan_form = new Plan_liste_formu();            
-            plan_form.Show();
             string ay = label_ay.Text;
             string month = "";
             switch (ay)
@@ -119,9 +117,16 @@ namespace ajanda
             }
             string year = label_yil.Text;
             string gun = label_gun.Text;
+            if (Application.OpenForms["Plan_liste_formu"] != null)
+            {
+                Application.OpenForms["Plan_liste_formu"].Close();
+            }
+            Plan_liste_formu plan_form = new Plan_liste_formu();
+            plan_form.Show();
             plan_form.label_time.Text = day + " " + ay + " " + year + "   " + gun;
             string tarih = day + "." + month + "." + year;
             plan_form.plan_liste(tarih);
+
         }
 
         //buton hover olayında
@@ -1383,8 +1388,12 @@ namespace ajanda
             ay_form.ay_gon = new Aylar.ay_gonder(ay_bulma);
             if (Application.OpenForms["Aylar"]==null)
             {
-                ay_form.Show();
-
+                Yillar yil_form = new Yillar();
+                if (Application.OpenForms["Yillar"] != null)
+                {
+                    Application.OpenForms["Yillar"].Close();
+                }
+                    ay_form.Show();
             }
         }
 
@@ -1394,9 +1403,15 @@ namespace ajanda
             yil_form.yil_gon = new Yillar.yil_gonder(yil_yaz);
             if (Application.OpenForms["Yillar"] == null)
             {
-                yil_form.Show();
+                Aylar ay_form = new Aylar();
+                if (Application.OpenForms["Aylar"] != null)
+                {
+                    Application.OpenForms["Aylar"].Close();
 
+                }
+                yil_form.Show();
             }
         }
+
     }
 }
