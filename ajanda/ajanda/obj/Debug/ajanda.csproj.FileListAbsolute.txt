@@ -13,3 +13,7 @@ D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.csprojAssemblyReference.cach
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.Ekle.resources
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.plan_liste_formu.resources
 D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.Duzenle.resources
+D:\masaüstü\ajanda\ajanda\ajanda\bin\Debug\ajanda.exe.manifest
+D:\masaüstü\ajanda\ajanda\ajanda\bin\Debug\ajanda.application
+D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.exe.manifest
+D:\masaüstü\ajanda\ajanda\ajanda\obj\Debug\ajanda.application

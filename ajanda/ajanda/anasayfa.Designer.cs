@@ -29,6 +29,7 @@ namespace ajanda
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Anasayfa));
             this.button01 = new System.Windows.Forms.Button();
             this.button02 = new System.Windows.Forms.Button();
             this.button03 = new System.Windows.Forms.Button();
@@ -1615,10 +1616,11 @@ namespace ajanda
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Anasayfa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ajanda";
+            this.Text = "Agenda";
             this.Load += new System.EventHandler(this.Anasayfa_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

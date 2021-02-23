@@ -29,6 +29,7 @@ namespace ajanda
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Plan_liste_formu));
             this.label_time = new System.Windows.Forms.Label();
             this.label_deger = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -78,11 +79,12 @@ namespace ajanda
             this.Controls.Add(this.label_time);
             this.ForeColor = System.Drawing.Color.Silver;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Plan_liste_formu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ekle";
+            this.Text = "Plans";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.plan_liste_formu_Load);
             this.ResumeLayout(false);

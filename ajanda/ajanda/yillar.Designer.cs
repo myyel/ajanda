@@ -29,6 +29,7 @@ namespace ajanda
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Yillar));
             this.but1 = new System.Windows.Forms.Button();
             this.but6 = new System.Windows.Forms.Button();
             this.but2 = new System.Windows.Forms.Button();
@@ -323,11 +324,12 @@ namespace ajanda
             this.Controls.Add(this.but1);
             this.ForeColor = System.Drawing.Color.Silver;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Yillar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Yıllar";
+            this.Text = "Years";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Yillar_Load);
             this.ResumeLayout(false);
